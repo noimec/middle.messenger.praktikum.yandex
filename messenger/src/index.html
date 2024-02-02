@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messenger</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="./stylesheets/global.scss">
 </head>
 <body>
-    <main>
-        Login
-        {{> button label="Click me"}}
-        <a href="./404.html">404</a>
-        <a href="./500.html">500</a>
-        <a href="./chat.html">Чат</a>
-        <a href="./sign-in.html">Регистрация</a>
-        <a href="./profile.html">Профиль</a>
+    {{> header}}
+    <main class="flex main">
+        {{> login}}
     </main>
+
 </body>
 </html>
