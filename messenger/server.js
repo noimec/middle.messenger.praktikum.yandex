@@ -22,8 +22,8 @@ app.get('/chat', function(_req, res) {
     res.sendFile(resolve(__dirname, 'dist/chat.html'))
 })
 
-app.get('/sign-in', function(_req, res) {
-    res.sendFile(resolve(__dirname, 'dist/sign-in.html'))
+app.get('/signin', function(_req, res) {
+    res.sendFile(resolve(__dirname, 'dist/signin.html'))
 })
 
 app.get('/profile', function(_req, res) {
