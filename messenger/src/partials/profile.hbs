@@ -1,0 +1,58 @@
+<main class="main flex">
+    <div class="flex back__wrapper">
+        {{> back-icon}}
+    </div>
+
+    <div class="profile flex">
+        <button class="profile__avatar">
+            <img src="#" alt="Avatar">
+        </button>
+        <h1 class="profile__name">Иван</h1>
+        <ul class="profile__list flex">
+            <li class="profile__item">
+                {{> user-details label="Почта" name="email" placeholder="pochta@yandex.ru"}}
+            </li>
+            <li class="profile__item">
+                {{> user-details label="Логин" name="login" placeholder="ivanivanov"}}
+            </li>
+            <li class="profile__item">
+                {{> user-details label="Имя" name="first_name" placeholder="Иван"}}
+            </li>
+            <li class="profile__item">
+                {{> user-details label="Фамилия" name="second_name" placeholder="Иванов"}}
+            </li>
+            <li class="profile__item">
+                {{> user-details label="Имя в чате" name="display_name" placeholder="Иван"}}
+            </li>
+            <li class="profile__item">
+                {{> user-details label="Телефон" name="phone" placeholder="+79999999999"}}
+            </li>
+        </ul>
+
+        <ul class="profile__list flex">
+            <li class="profile__item profile__item_blue">
+                <button>Изменить данные</button>
+            </li>
+            <li class="profile__item profile__item_blue">
+                <button>Изменить пароль</button>
+            </li>
+            <li class="profile__item profile__item_red">
+                <button>Выйти</button>
+            </li>
+        </ul>
+
+        <ul class="profile__list flex">
+            <li class="profile__item">
+                {{> user-details label="Старый пароль" name="oldPassword" placeholder="******"}}
+            </li>
+            <li class="profile__item">
+                {{> user-details label="Новый пароль" name="newPassword" placeholder="******"}}
+            </li>
+            <li class="profile__item">
+                {{> user-details label="Повторите новый пароль" name="newPassword" placeholder="******"}}
+            </li>
+        </ul>
+
+        <button class="action-button profile__save-btn">Сохранить</button>
+    </div>
+</main>
