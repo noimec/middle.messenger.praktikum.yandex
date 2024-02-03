@@ -4,28 +4,28 @@
     </div>
 
     <div class="profile flex">
-        <button class="profile__avatar">
+        <button id="avatar" class="profile__avatar avatar">
             <img src="#" alt="Avatar">
         </button>
         <h1 class="profile__name">Иван</h1>
         <ul class="profile__list flex">
             <li class="profile__item">
-                {{> user-details label="Почта" name="email" placeholder="pochta@yandex.ru"}}
+                {{> user-details label="Почта" name="email" value="pochta@yandex.ru"}}
             </li>
             <li class="profile__item">
-                {{> user-details label="Логин" name="login" placeholder="ivanivanov"}}
+                {{> user-details label="Логин" name="login" value="ivanivanov"}}
             </li>
             <li class="profile__item">
-                {{> user-details label="Имя" name="first_name" placeholder="Иван"}}
+                {{> user-details label="Имя" name="first_name" value="Иван"}}
             </li>
             <li class="profile__item">
-                {{> user-details label="Фамилия" name="second_name" placeholder="Иванов"}}
+                {{> user-details label="Фамилия" name="second_name" value="Иванов"}}
             </li>
             <li class="profile__item">
-                {{> user-details label="Имя в чате" name="display_name" placeholder="Иван"}}
+                {{> user-details label="Имя в чате" name="display_name" value="Иван"}}
             </li>
             <li class="profile__item">
-                {{> user-details label="Телефон" name="phone" placeholder="+79999999999"}}
+                {{> user-details label="Телефон" name="phone" value="+79999999999"}}
             </li>
         </ul>
 
@@ -43,13 +43,13 @@
 
         <ul class="profile__list flex">
             <li class="profile__item">
-                {{> user-details label="Старый пароль" name="oldPassword" placeholder="******"}}
+                {{> user-details label="Старый пароль" name="oldPassword" value="******"}}
             </li>
             <li class="profile__item">
-                {{> user-details label="Новый пароль" name="newPassword" placeholder="******"}}
+                {{> user-details label="Новый пароль" name="newPassword" value="******"}}
             </li>
             <li class="profile__item">
-                {{> user-details label="Повторите новый пароль" name="newPassword" placeholder="******"}}
+                {{> user-details label="Повторите новый пароль" name="newPassword" value="******"}}
             </li>
         </ul>
 
