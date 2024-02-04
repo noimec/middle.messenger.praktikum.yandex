@@ -1,5 +1,5 @@
 <main class="flex main">
-    <div class="sidebar flex">
+    <section class="sidebar flex">
         <a class="sidebar__link" href="./profile.html">Профиль</a>
         <input class="sidebar__input" type="text" placeholder="Поиск">
 
@@ -13,9 +13,9 @@
             <li class="sidebar__item">{{> sender name="Андрей" sender_message="Изображение" date="10:49"
                 message_count="4"}}</li>
         </ul>
-    </div>
+    </section>
 
-    <div class="chat flex">
+    <section class="chat flex">
         <div class="chat__header flex">
             <button class="chat__icon"></button>
             <span class="chat__name">Вадим</span>
@@ -38,10 +38,33 @@
                     </p>
                     <span class="chat__time">11:56</span>
                 </div>
+               
                 <div class="chat__img-wrapper">
                     <div class="chat__img"></div>
                     <span class="chat__time chat__time_rounded">11:56</span>
                 </div>
+
+                <div class="chat__text-wrapper">
+                    <p class="chat__sender-text">
+                        Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
+                        попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
+                        астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на
+                        поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+
+                        Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так
+                        никогда
+                        и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000
+                        евро.
+                    </p>
+                    <span class="chat__time">11:56</span>
+                </div>
+               
+                <div class="chat__img-wrapper">
+                    <div class="chat__img"></div>
+                    <span class="chat__time chat__time_rounded">11:56</span>
+                </div>
+
+                
                 <div class="chat__own-message flex">
                     <p>Круто!</p>
                     <span class="chat__time chat__time_blue">11:56</span>
@@ -53,5 +76,5 @@
             <input class="chat__message" type="text" name="message" placeholder="Сообщение">
             <button class="chat__send-btn">{{> back-icon}}</button>
         </div>
-    </div>
+    </section>
 </main>

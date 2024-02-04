@@ -3,13 +3,15 @@
 
         <h1 class="form__title">Регистрация</h1>
 
-        {{> input label="Почта" name="email"}}
-        {{> input label="Логин" name="login"}}
-        {{> input label="Имя" name="first_name"}}
-        {{> input label="Фамилия" name="second_name"}}
-        {{> input label="Телефон" name="phone"}}
-        {{> input label="Пароль" name="password"}}
-
+        <ul class="flex form__list">
+            <li class="form__item flex">{{> input label="Почта" name="email"}}</li>
+            <li class="form__item flex">{{> input label="Логин" name="login"}}</li>
+            <li class="form__item flex">{{> input label="Имя" name="first_name"}}</li>
+            <li class="form__item flex">{{> input label="Фамилия" name="second_name"}}</li>
+            <li class="form__item flex">{{> input label="Телефон" name="phone"}}</li>
+            <li class="form__item flex">{{> input label="Пароль" name="password"}}</li>
+        </ul>
+        
         <button class="action-button">Создать аккаунт</button>
         <button class="common-button">Войти</button>
 
