@@ -1,46 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap');
 
+$primary-text: #1E1E1E;
+$primary-background: #FFF;
+$primary-accent: #3369F3;
+$secondary-text: #999;
+$button-background: #FBFBFB;
+$button-border: #EAEAEA;
+$button-hover: #EFEFEF;
+$link-hover: #E4EDFD;
+$error-red: #FF0000;
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  color: #1E1E1E;
-}
-
-body {
+.body {
   font-size: 13px;
   line-height: 13px;
   font-weight: 500;
   margin: 0 auto;
   height: 100vh;
+  max-width: 100vw;
   position: relative;
+  overflow-x: hidden;
   font-family: 'Inter', sans-serif;
-  background-color: #FFF;
+  color: $primary-text;
+  background-color: $primary-background;
 }
 
-a {
+.reset-link {
   color: inherit;
   text-decoration: none;
 }
 
-ul {
+.reset-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-input {
+.reset-input {
   outline: none;
   border: none;
 }
 
-button {
+.reset-btn {
   padding: 0;
   margin: 0;
   cursor: pointer;
@@ -83,7 +89,7 @@ button {
 .nav__list {
   font-size: 15px;
   line-height: 15px;
-  color: #3369F3;
+  color: $primary-accent;
 }
 
 .nav__item:not(:last-child) {
@@ -93,7 +99,7 @@ button {
 .back-link {
   font-size: 11px;
   line-height: 11px;
-  color: #3369F3;
+  color: $primary-accent;
 }
 
 .main {
@@ -135,29 +141,29 @@ button {
 .form__input {
   min-width: 280px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #3369F3;
+  border-bottom: 1px solid $primary-accent;
 }
 
 .form__label {
   font-size: 9px;
   line-height: 9px;
   margin-bottom: 8px;
-  color: #999;
+  color: $secondary-text;
 }
 
 .action-button {
   margin-top: auto;
   border-radius: 8px;
   padding: 12px 0;
-  color: #FFF;
-  background-color: #3369F3;
+  color: $primary-background;
+  background-color: $primary-accent;
 }
 
 .common-button {
   margin-top: 14px;
   font-size: 11px;
   line-height: 11px;
-  color: #3369F3;
+  color: $primary-accent;
 }
 
 .back__wrapper {
@@ -166,6 +172,6 @@ button {
   left: 0;
   height: 100%;
   padding: 0 18px;
-  background-color: #FBFBFB;
-  border-right: 1px solid #EAEAEA;
+  background-color: $button-background;
+  border-right: 1px solid $button-border;
 }
