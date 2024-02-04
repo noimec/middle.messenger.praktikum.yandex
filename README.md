@@ -14,6 +14,8 @@
 
 # Ссылки
 
+[Домен Netlify](https://deploy--subtle-gingersnap-4c80f7.netlify.app/)
+
 Экраны:
 
 -[авторизация](https://www.figma.com/file/buMrjuDILmy0L8vLTmOu24/Chat_external_link?type=design&node-id=1-600&mode=design&t=Blw63sVPrYMunR14-4),
