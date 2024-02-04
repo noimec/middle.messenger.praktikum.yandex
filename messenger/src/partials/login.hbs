@@ -3,8 +3,10 @@
 
         <h1 class="form__title">Вход</h1>
 
-        {{> input label="Логин" name="login"}}
-        {{> input label="Пароль" name="password"}}
+        <ul class="flex form__list">
+            <li class="form__item flex">{{> input label="Логин" name="login"}}</li>
+            <li class="form__item flex">{{> input label="Пароль" name="password"}}</li>
+        </ul>
 
         <button class="action-button">Войти</button>
         <button class="common-button">Создать аккаунт</button>
