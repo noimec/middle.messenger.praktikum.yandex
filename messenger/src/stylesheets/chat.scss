@@ -24,6 +24,7 @@
 
 .sidebar__list {
     flex-direction: column;
+    overflow-y: auto;
     width: 100%;
 }
 
