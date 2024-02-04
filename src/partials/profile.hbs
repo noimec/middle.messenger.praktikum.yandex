@@ -4,13 +4,13 @@
     </div>
 
     <section class="profile flex">
-        <button id="avatar" class="profile__avatar avatar reset-btn">
+        <button id="avatar" class="reset-btn profile__avatar avatar">
             <img src="#" alt="Avatar">
         </button>
         <h1 class="profile__name">Иван</h1>
         
         <form class="profile__form flex" action="#">
-            <ul class="profile__list flex reset-list">
+            <ul class="reset-list profile__list flex">
             <li class="profile__item">
                 {{> user-details label="Почта" name="email" value="pochta@yandex.ru"}}
             </li>
@@ -31,7 +31,7 @@
             </li>
         </ul>
 
-        <ul class="profile__list flex reset-list">
+        <ul class="reset-list profile__list flex">
             <li class="profile__item">
                 <button class="profile__item_blue reset-btn">Изменить данные</button>
             </li>
@@ -43,7 +43,7 @@
             </li>
         </ul>
 
-        <ul class="profile__list flex reset-list">
+        <ul class="reset-list profile__list flex">
             <li class="profile__item">
                 {{> user-details label="Старый пароль" name="oldPassword" value="******"}}
             </li>
@@ -55,7 +55,7 @@
             </li>
         </ul>
 
-        <button class="action-button profile__save-btn reset-btn">Сохранить</button>
+        <button class="reset-btn action-button profile__save-btn">Сохранить</button>
         </form>
     </section>
 </main>
