@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "vite build --emptyOutDir && node ./server.js"
+    "start": "vite build --emptyOutDir && node ./server.js",
+    "build": "vite build"
   },
   "devDependencies": {
     "express": "^4.18.2",
