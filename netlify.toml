@@ -1,4 +1,5 @@
 [build]
-    base = "src"
     command = "npm run build"
-    publish = "dist"
+    publish = "/opt/build/repo/src/dist"
+    NODE_VERSION = "20.10.0"
+    NPM_FLAGS = "--prod"
