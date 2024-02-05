@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap');
+
+$primary-text: #1E1E1E;
+$primary-background: #FFF;
+$primary-accent: #3369F3;
+$secondary-text: #999;
+$button-background: #FBFBFB;
+$button-border: #EAEAEA;
+$button-hover: #EFEFEF;
+$link-hover: #E4EDFD;
+$error-red: #FF0000;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.body {
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: 500;
+  margin: 0 auto;
+  height: 100vh;
+  max-width: 100vw;
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  color: $primary-text;
+  background-color: $primary-background;
+}
+
+.reset-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.reset-list {
+  padding: 0;
+  list-style: none;
+}
+
+.reset-input {
+  outline: none;
+  border: none;
+}
+
+.reset-btn {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.flex {
+  display: flex;
+}
+
+.error {
+  margin: 0 auto;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error__title {
+  font-size: 40px;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
+.error__descr {
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 70px;
+}
+
+.header {
+  justify-content: center;
+  position: absolute;
+  z-index: 10;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.nav__list {
+  font-size: 15px;
+  line-height: 15px;
+  color: $primary-accent;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.back-link {
+  font-size: 11px;
+  line-height: 11px;
+  color: $primary-accent;
+}
+
+.main {
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  flex-direction: column;
+  min-height: 450px;
+  padding: 50px 30px 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, .14);
+}
+
+.form__title {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.form__list {
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.form__item {
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.form__input {
+  min-width: 280px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $primary-accent;
+}
+
+.form__label {
+  font-size: 9px;
+  line-height: 9px;
+  margin-bottom: 8px;
+  color: $secondary-text;
+}
+
+.action-button {
+  margin-top: auto;
+  border-radius: 8px;
+  padding: 12px 0;
+  color: $primary-background;
+  background-color: $primary-accent;
+}
+
+.common-button {
+  margin-top: 14px;
+  font-size: 11px;
+  line-height: 11px;
+  color: $primary-accent;
+}
+
+.back__wrapper {
+  position: absolute;
+  align-items: center;
+  left: 0;
+  height: 100%;
+  padding: 0 18px;
+  background-color: $button-background;
+  border-right: 1px solid $button-border;
+}
