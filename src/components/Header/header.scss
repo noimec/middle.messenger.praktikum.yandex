@@ -1,0 +1,17 @@
+.header {
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.nav__list {
+    font-size: 15px;
+    line-height: 15px;
+    color: $primary-accent;
+}

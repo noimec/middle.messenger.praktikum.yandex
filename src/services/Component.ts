@@ -14,7 +14,7 @@ export default class Component<P extends object> {
   _children;
   _id;
   _lists;
-  private _element: HTMLElement | null = null;
+  _element: HTMLElement | null = null;
   _meta: { tag: string; props: object };
   _eventBus: EventBus;
   _setUpdate = false;
@@ -114,7 +114,7 @@ export default class Component<P extends object> {
     return { children, props, lists };
   }
 
-  compile(template, props?) {
+  compile(template, props) {
     if (typeof (props) == "undefined") {
       props = this._props;
     }

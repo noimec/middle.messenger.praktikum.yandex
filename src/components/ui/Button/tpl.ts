@@ -1,5 +1,3 @@
-const tpl = `
-
-`
+const tpl = `{{value}}`
 
 export default tpl;

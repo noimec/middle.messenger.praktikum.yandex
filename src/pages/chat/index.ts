@@ -10,10 +10,10 @@ export default class ChatPage {
 
     constructor() {
         this.dialogData = [
-            new Dialog('div', {
+            new Dialog({
                 date: '19 июля',
                 messages: [
-                    new Message('div', {
+                    new Message({
                         sender: 'sender',
                         text: `Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
                                 попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
@@ -26,21 +26,21 @@ export default class ChatPage {
                                 евро.`,
                         time: '11:52',
                     }),
-                    new Message('div', {
+                    new Message({
                         img: 'img',
                         time: '10:04',
                     }),
-                    new Message('div', {
+                    new Message({
                         own: 'own',
                         text: 'Круто',
                         time: '12:44'
                     }),
                 ]
             }),
-            new Dialog('div', {
+            new Dialog({
                 date: '20 июля',
                 messages: [
-                    new Message('div', {
+                    new Message({
                         sender: 'sender',
                         text: `Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
                                 попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
@@ -48,21 +48,21 @@ export default class ChatPage {
                                 поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой..`,
                         time: '12:42',
                     }),
-                    new Message('div', {
+                    new Message({
                         img: 'img',
                         time: '10:04',
                     }),
-                    new Message('div', {
+                    new Message({
                         own: 'own',
                         text: 'Круто',
                         time: '12:44'
                     }),
                 ]
             }),
-            new Dialog('div', {
+            new Dialog({
                 date: '19 июля',
                 messages: [
-                    new Message('div', {
+                    new Message({
                         sender: 'sender',
                         text: `Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
                                 попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
@@ -75,11 +75,11 @@ export default class ChatPage {
                                 евро.`,
                         time: '11:52',
                     }),
-                    new Message('div', {
+                    new Message({
                         img: 'img',
                         time: '10:04',
                     }),
-                    new Message('div', {
+                    new Message({
                         own: 'own',
                         text: 'Круто',
                         time: '12:44'
@@ -89,13 +89,13 @@ export default class ChatPage {
         ]
 
         this.senderArray = [
-            new Sender('li', { name: "Андрей", sender_message: "Изображение", date: "10:49", message_count: "1", attr: { class: "sidebar__item" } }),
-            new Sender('li', { name: "Илья", sender_message: "И Human Interface Guidelines и Material Design рекомендуют...", date: "11:59", message_count: "3", attr: { class: "sidebar__item" } }),
-            new Sender('li', { name: "Киноклуб", sender_message: "В 2008 году художник Jon Rafman  начал собирать", date: "13:29", message_count: "2", attr: { class: "sidebar__item" } }),
-            new Sender('li', { name: "Day.", sender_message: "Миллионы россиян ежедневно проводят десятки часов свое", date: "16:20", message_count: "10", attr: { class: "sidebar__item" } }),
+            new Sender({ name: "Андрей", sender_message: "Изображение", date: "10:49", message_count: "1", attr: { class: "sidebar__item" } }),
+            new Sender({ name: "Илья", sender_message: "И Human Interface Guidelines и Material Design рекомендуют...", date: "11:59", message_count: "3", attr: { class: "sidebar__item" } }),
+            new Sender({ name: "Киноклуб", sender_message: "В 2008 году художник Jon Rafman  начал собирать", date: "13:29", message_count: "2", attr: { class: "sidebar__item" } }),
+            new Sender({ name: "Day.", sender_message: "Миллионы россиян ежедневно проводят десятки часов свое", date: "16:20", message_count: "10", attr: { class: "sidebar__item" } }),
         ]
 
-        this.chatInstance = new Chat('main', {
+        this.chatInstance = new Chat({
             senders: this.senderArray,
             dialog: this.dialogData,
             attr: {
