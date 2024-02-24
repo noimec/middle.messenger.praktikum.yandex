@@ -2,6 +2,9 @@ import Chat from "../../components/Chat";
 import Dialog from "../../components/Dialog";
 import Message from "../../components/Message";
 import Sender from "../../components/Sender";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
+import Link from "../../components/ui/Link";
 
 export default class ChatPage {
     private chatInstance: Chat;
@@ -98,6 +101,13 @@ export default class ChatPage {
         this.chatInstance = new Chat({
             senders: this.senderArray,
             dialog: this.dialogData,
+            messageInput: [new Input({ attr: { class: 'chat__message reset-input', type: 'text', placeholder: 'Сообщение', name: 'message' } })],
+            senderIconBtn: [new Button({ value: '', attr: { class: 'chat__icon reset-btn' } })],
+            searchInput: [new Input({ attr: { class: 'sidebar__input reset-input', type: 'text', placeholder: 'Поиск' } })],
+            profileLink: [new Link({ value: 'Профиль', attr: { class: 'sidebar__link reset-link', href: './profile' } })],
+            attachBtn: [new Button({ value: 'attach-icon', attr: { class: 'chat__attach-btn reset-btn' } })],
+            backBtn: [new Button({ value: 'back-icon', attr: { class: 'chat__send-btn reset-btn' } })],
+            menuBtn: [new Button({ value: 'menu-icon', attr: { class: 'chat__menu reset-btn' } })],
             attr: {
                 class: "main flex"
             }

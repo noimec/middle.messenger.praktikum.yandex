@@ -4,9 +4,7 @@ const tpl = `
     </div>
 
     <section class="profile flex">
-        <button id="avatar" class="reset-btn profile__avatar avatar">
-            <img src="#" alt="Avatar">
-        </button>
+        {{{avatarBtn}}}
         <h1 class="profile__name">{{userName}}</h1>
         
         <form class="profile__form flex" action="#">
@@ -16,13 +14,13 @@ const tpl = `
 
             <ul class="reset-list profile__list flex">
                 <li class="profile__item">
-                    <button class="profile__item_blue reset-btn">Изменить данные</button>
+                    {{{changeDataBtn}}}
                 </li>
                 <li class="profile__item">
-                    <button class="profile__item_blue reset-btn">Изменить пароль</button>
+                    {{{changePassBtn}}}
                 </li>
                 <li class="profile__item">
-                    <button class="profile__item_red reset-btn">Выйти</button>
+                    {{{exitBtn}}}
                 </li>
             </ul>
 
@@ -30,7 +28,7 @@ const tpl = `
                 {{{changes}}}
             </ul>
 
-            <button class="reset-btn action-button profile__save-btn">Сохранить</button>
+            {{{saveBtn}}}
         </form>
     </section>
 `

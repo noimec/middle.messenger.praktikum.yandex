@@ -1,10 +1,11 @@
 import Component from "../../services/Component"
+import Input from "../ui/Input";
 import tpl from "./tpl"
 
 interface IProfileField {
-    name: string
-    label: string
-    value: string
+    name: string;
+    label: string;
+    profileInput: Input[];
     attr: {}
 }
 
