@@ -1,15 +1,16 @@
 import Header from "./components/Header";
+import Link from "./components/ui/Link";
 
 const root = document.querySelector("#app");
 
 const header = new Header('header', {
   links: [
-    { page: '500', text: '500' },
-    { page: '404', text: '404' },
-    { page: 'chat', text: 'Чат' },
-    { page: 'profile', text: 'Профиль' },
-    { page: 'login', text: 'Вход' },
-    { page: 'signin', text: 'Регистрация' },
+    new Link('li', { page: '500', text: '500', attr: { class: 'nav__item' } },),
+    new Link('li', { page: '404', text: '404', attr: { class: 'nav__item' } }),
+    new Link('li', { page: 'chat', text: 'Чат', attr: { class: 'nav__item' } }),
+    new Link('li', { page: 'profile', text: 'Профиль', attr: { class: 'nav__item' } }),
+    new Link('li', { page: 'login', text: 'Вход', attr: { class: 'nav__item' } }),
+    new Link('li', { page: 'signin', text: 'Регистрация', attr: { class: 'nav__item' } }),
   ],
   attr: {
     class: 'header flex'

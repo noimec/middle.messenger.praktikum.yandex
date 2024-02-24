@@ -8,6 +8,8 @@ interface Err {
 
 export default class Error extends Component<Err> {
     render() {
+
+
         return this.compile(tpl);
     }
 }
