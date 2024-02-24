@@ -3,7 +3,9 @@ const tpl = `
         <a class="sidebar__link reset-link" href="./profile.html">Профиль</a>
         <input class="sidebar__input reset-input" type="text" placeholder="Поиск">
         
-        {{{sender}}}
+        <ul class="sidebar__list flex reset-list"> 
+            {{{senders}}}
+        </ul>
 </section>
 <section class="chat flex">
         <div class="chat__header flex">
@@ -11,8 +13,9 @@ const tpl = `
             <span class="chat__name">Вадим</span>
             <button class="chat__menu reset-btn">menu-icon</button>
         </div>
-
-        {{{dialog}}}
+        <div class="chat__window flex">
+            {{{dialog}}}
+        </div>
 
         <div class="chat__footer flex">
             <button class="chat__attach-btn reset-btn">attach-icon</button>

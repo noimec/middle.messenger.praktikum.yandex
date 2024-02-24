@@ -6,7 +6,7 @@ interface HeaderProps {
     className?: string;
 }
 
-export default class Header extends Component<HeaderProps> {
+export default class Header extends Component<object> {
     render() {
         return this.compile(tpl);
     }

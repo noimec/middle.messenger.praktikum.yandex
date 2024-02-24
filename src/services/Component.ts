@@ -13,17 +13,19 @@ export default class Component<P extends object> {
   _props;
   _children;
   _id;
+  _lists;
   private _element: HTMLElement | null = null;
   _meta: { tag: string; props: object };
   _eventBus: EventBus;
   _setUpdate = false;
 
   constructor(tag = "div", propsAndChilds = {}) {
-    const { children, props } = this.getChildren(propsAndChilds);
+    const { children, props, lists } = this.getChildren(propsAndChilds);
 
     this._eventBus = new EventBus();
     this._id = uuidv4();
     this._children = this.makePropsProxy(children);
+    this._lists = this.makePropsProxy(lists);
     this._props = this.makePropsProxy({ ...props, __id: this._id });
     this._meta = { tag, props };
 
@@ -97,20 +99,23 @@ export default class Component<P extends object> {
   getChildren(propsAndChilds) {
     const children = {};
     const props = {};
+    const lists = {};
 
     Object.keys(propsAndChilds).forEach((key) => {
       if (propsAndChilds[key] instanceof Component) {
         children[key] = propsAndChilds[key];
+      } else if (Array.isArray(propsAndChilds[key])) {
+        lists[key] = propsAndChilds[key];
       } else {
         props[key] = propsAndChilds[key];
       }
     });
 
-    return { children, props };
+    return { children, props, lists };
   }
 
   compile(template, props?) {
-    if (typeof props == "undefined") {
+    if (typeof (props) == "undefined") {
       props = this._props;
     }
 
@@ -118,6 +123,10 @@ export default class Component<P extends object> {
 
     Object.entries(this._children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
+    });
+
+    Object.entries(this._lists).forEach(([key, child]) => {
+      propsAndStubs[key] = `<div data-id="__1_${key}"></div>`;
     });
 
     const fragment = this.createDocumentElement("template");
@@ -129,6 +138,26 @@ export default class Component<P extends object> {
       if (stub) {
         stub.replaceWith(child.getContent());
       }
+    });
+
+    Object.entries(this._lists).forEach(([key, child]) => {
+      const stub = fragment.content.querySelector(`[data-id="__1_${key}"]`);
+
+      if (!stub) {
+        return;
+      }
+
+      const listContent = this.createDocumentElement('template');
+
+      child.forEach(item => {
+        if (item instanceof Component) {
+          listContent.content.append(item.getContent());
+        } else {
+          listContent.content.append(`${item}`)
+        }
+      })
+
+      stub.replaceWith(listContent.content);
     });
 
     return fragment.content;
@@ -168,14 +197,26 @@ export default class Component<P extends object> {
       return;
     }
 
-    const { children, props } = this.getChildren(newProps);
+    this._setUpdate = false;
+    const oldValue = { ...this._props };
+
+    const { children, props, lists } = this.getChildren(newProps);
 
     if (Object.values(children).length) {
       Object.assign(this._children, children);
     }
 
+    if (Object.values(lists).length) {
+      Object.assign(this._lists, lists);
+    }
+
     if (Object.values(props).length) {
       Object.assign(this._props, props);
+    }
+
+    if (this._setUpdate) {
+      this._eventBus.emit(Component.EVENTS.FLOW_CDU, oldValue, this._props);
+      this._setUpdate = false;
     }
   }
 
@@ -186,8 +227,10 @@ export default class Component<P extends object> {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set: (target: Record<string, unknown>, prop: string, value: unknown) => {
-        target[prop] = value;
-        this._eventBus.emit(Component.EVENTS.FLOW_CDU, { ...target }, target);
+        if (target[prop] !== value) {
+          target[prop] = value;
+          this._setUpdate = true;
+        }
         return true;
       },
       deleteProperty() {

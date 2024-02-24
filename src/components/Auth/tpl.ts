@@ -4,12 +4,7 @@ const tpl = `
         <h1 class="form__title">{{title}}</h1>
 
         <ul class="flex form__list reset-list">
-            {{#each items}} 
-                <li class="form__item flex">
-                    <label class="form__label" for={{name}}>{{label}}</label>
-                    <input class="form__input reset-input" type="text" name={{name}} id={{name}} />
-                </li>
-            {{/each}}
+            {{{fields}}}
         </ul>
         
         <button class="action-button reset-btn">{{action}}</button>
