@@ -4,7 +4,7 @@ export default class Page404 {
     private errorInstance: Error;
 
     constructor() {
-        this.errorInstance = new Error('main', {
+        this.errorInstance = new Error({
             title: 'Не туда попали',
             mainTitle: '404',
             attr: {

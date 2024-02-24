@@ -1,8 +1,19 @@
 import Component from "../../services/Component";
 import tpl from "./tpl";
 
-export default class Sender extends Component<object> {
+interface ISender {
+    name: string;
+    sender_message: string;
+    date: string;
+    message_count: string;
+    attr: {};
+}
+
+export default class Sender extends Component<ISender> {
+    constructor(props: ISender) {
+        super('li', props)
+    }
     render(): void {
-        return this.compile(tpl)
+        return this.compile(tpl, this._props)
     }
 }
