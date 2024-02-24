@@ -6,9 +6,9 @@ const tpl = `
         <ul class="flex form__list reset-list">
             {{{fields}}}
         </ul>
-        
-        <button class="action-button reset-btn">{{action}}</button>
-        <button class="common-button reset-btn">{{common}}</button>
+
+        {{{actionBtn}}}
+        {{{commonBtn}}}
 
     </form>
 `

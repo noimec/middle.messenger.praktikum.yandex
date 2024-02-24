@@ -1,5 +1,3 @@
-const tpl = `
-
-`
+const tpl = ``
 
 export default tpl;

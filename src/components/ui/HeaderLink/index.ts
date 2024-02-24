@@ -1,14 +1,14 @@
 import Component from "../../../services/Component"
 import tpl from "./tpl"
 
-interface ILink {
+interface IHeaderLink {
     page: string;
     text: string;
     attr: object
 }
 
-export default class HeaderLink extends Component<ILink> {
-    constructor(props: ILink) {
+export default class HeaderLink extends Component<IHeaderLink> {
+    constructor(props: IHeaderLink) {
         super('li', props)
     }
 
