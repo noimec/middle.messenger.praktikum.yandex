@@ -11,6 +11,6 @@ const tpl = `
         {{{commonBtn}}}
 
     </form>
-`
+`;
 
 export default tpl;

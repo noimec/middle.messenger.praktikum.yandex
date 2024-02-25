@@ -1,8 +1,8 @@
-import Nav from "./components/Nav";
-import NavLink from "./components/ui/NavLink";
-import ChatPage from "./pages/chat";
+import Nav from './components/Nav';
+import NavLink from './components/ui/NavLink';
+import ChatPage from './pages/chat';
 
-const root = document.querySelector("#app");
+const root = document.querySelector('#app');
 
 const nav = new Nav({
   links: [
@@ -14,24 +14,24 @@ const nav = new Nav({
     new NavLink({ page: 'signin', text: 'Регистрация', attr: { class: 'nav__item' } }),
   ],
   attr: {
-    class: 'nav flex'
-  }
+    class: 'nav flex',
+  },
 });
 
 const chatPage = new ChatPage().getContent();
 const navElement = nav.getContent();
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   root?.appendChild(navElement);
   root?.appendChild(chatPage);
 
-  const links = document.querySelectorAll(".page-link");
+  const links = document.querySelectorAll('.page-link');
 
-  links.forEach(link => {
-    link.addEventListener("click", async (event: Event) => {
+  links.forEach((link) => {
+    link.addEventListener('click', async (event: Event) => {
       event.preventDefault();
 
-      const pageName = (event.target as HTMLElement).getAttribute("data-page");
+      const pageName = (event.target as HTMLElement).getAttribute('data-page');
 
       if (pageName) {
         await loadPage(pageName);
@@ -46,7 +46,7 @@ const loadPage = async (pageName: string) => {
   const pageElement = page.getContent();
 
   if (root) {
-    root.innerHTML = "";
+    root.innerHTML = '';
     root.appendChild(navElement);
     root.appendChild(pageElement);
   }

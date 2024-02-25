@@ -1,3 +1,3 @@
-const tpl = `{{value}}`
+const tpl = '{{value}}';
 
-export default tpl
+export default tpl;

@@ -4,6 +4,6 @@ const tpl = `
   <h2 class="error__descr">{{title}}</h2>
   
   {{{backLink}}}
-`
+`;
 
 export default tpl;

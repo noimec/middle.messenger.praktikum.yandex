@@ -1,10 +1,10 @@
-import Component from "../../services/Component";
-import Dialog from "../Dialog";
-import Sender from "../Sender";
-import Button from "../ui/Button";
-import Input from "../ui/Input";
-import Link from "../ui/Link";
-import tpl from "./tpl";
+import Component from '../../services/Component';
+import Dialog from '../Dialog';
+import Sender from '../Sender';
+import Button from '../ui/Button';
+import Input from '../ui/Input';
+import Link from '../ui/Link';
+import tpl from './tpl';
 
 interface IChat {
     senders: Sender[];
@@ -20,11 +20,11 @@ interface IChat {
 }
 
 export default class Chat extends Component<IChat> {
-    constructor(props: IChat) {
-        super('div', props)
-    }
+  constructor(props: IChat) {
+    super('div', props);
+  }
 
-    render() {
-        return this.compile(tpl, this._props);
-    }
+  render() {
+    return this.compile(tpl, this._props);
+  }
 }

@@ -1,21 +1,21 @@
-import Error from "../../components/Error";
-import Link from "../../components/ui/Link";
+import Error from '../../components/Error';
+import Link from '../../components/ui/Link';
 
 export default class Page404 {
-    private errorInstance: Error;
+  private errorInstance: Error;
 
-    constructor() {
-        this.errorInstance = new Error({
-            title: 'Мы уже фиксим',
-            mainTitle: '500',
-            backLink: [new Link({ value: 'Назад к чатам', attr: { class: 'back-link reset-link', href: './chat' } })],
-            attr: {
-                class: "error flex"
-            }
-        });
-    }
+  constructor() {
+    this.errorInstance = new Error({
+      title: 'Мы уже фиксим',
+      mainTitle: '500',
+      backLink: [new Link({ value: 'Назад к чатам', attr: { class: 'back-link reset-link', href: './chat' } })],
+      attr: {
+        class: 'error flex',
+      },
+    });
+  }
 
-    getContent() {
-        return this.errorInstance.getContent();
-    }
+  getContent() {
+    return this.errorInstance.getContent();
+  }
 }

@@ -25,6 +25,6 @@ const tpl = `
         <span class="chat__time chat__time_rounded">{{time}}</span>
     </div>
 {{/if}}
-`
+`;
 
 export default tpl;
