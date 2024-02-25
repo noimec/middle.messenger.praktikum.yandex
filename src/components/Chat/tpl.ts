@@ -23,6 +23,6 @@ const tpl = `
             {{{backBtn}}}
         </div>
 </section>    
-`
+`;
 
 export default tpl;

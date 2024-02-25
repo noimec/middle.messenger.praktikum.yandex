@@ -1,7 +1,7 @@
-import Component from "../../services/Component";
-import ProfileField from "../ProfileField";
-import Button from "../ui/Button";
-import tpl from "./tpl";
+import Component from '../../services/Component';
+import ProfileField from '../ProfileField';
+import Button from '../ui/Button';
+import tpl from './tpl';
 
 interface IProfile {
     userName: string;
@@ -17,11 +17,11 @@ interface IProfile {
 }
 
 export default class Profile extends Component<IProfile> {
-    constructor(props: IProfile) {
-        super('div', props)
-    }
+  constructor(props: IProfile) {
+    super('div', props);
+  }
 
-    render() {
-        return this.compile(tpl, this._props)
-    }
+  render() {
+    return this.compile(tpl, this._props);
+  }
 }

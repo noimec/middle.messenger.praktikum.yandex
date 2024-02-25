@@ -10,6 +10,6 @@ const tpl = `
                 <span class="sidebar__counter">{{message_count}}</span>
             </div>
         </button>         
-`
+`;
 
 export default tpl;

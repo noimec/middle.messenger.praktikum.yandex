@@ -1,6 +1,6 @@
-import Component from "../../services/Component";
-import Input from "../ui/Input";
-import tpl from "./tpl";
+import Component from '../../services/Component';
+import Input from '../ui/Input';
+import tpl from './tpl';
 
 interface IAuthField {
     label: string
@@ -10,11 +10,11 @@ interface IAuthField {
 }
 
 export default class AuthField extends Component<IAuthField> {
-    constructor(props: IAuthField) {
-        super('div', props)
-    }
-    
-    render() {
-        return this.compile(tpl, this._props);
-    }
+  constructor(props: IAuthField) {
+    super('div', props);
+  }
+
+  render() {
+    return this.compile(tpl, this._props);
+  }
 }

@@ -4,6 +4,6 @@ const tpl = `
     <div class="chat__dialog">
         {{{messages}}}
     </div>
-`
+`;
 
 export default tpl;

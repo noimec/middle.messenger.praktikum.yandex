@@ -1,7 +1,7 @@
-import Component from "../../services/Component";
-import AuthField from "../AuthField";
-import Button from "../ui/Button";
-import tpl from "./tpl";
+import Component from '../../services/Component';
+import AuthField from '../AuthField';
+import Button from '../ui/Button';
+import tpl from './tpl';
 
 interface IAuth {
     title: string;
@@ -12,11 +12,11 @@ interface IAuth {
 }
 
 export default class Auth extends Component<IAuth> {
-    constructor(props: IAuth) {
-        super('div', props)
-    }
-    
-    render() {
-        return this.compile(tpl, this._props);
-    }
+  constructor(props: IAuth) {
+    super('div', props);
+  }
+
+  render() {
+    return this.compile(tpl, this._props);
+  }
 }

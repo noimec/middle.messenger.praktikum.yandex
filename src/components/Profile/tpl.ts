@@ -31,6 +31,6 @@ const tpl = `
             {{{saveBtn}}}
         </form>
     </section>
-`
+`;
 
 export default tpl;

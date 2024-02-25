@@ -1,5 +1,5 @@
-import Component from "../../../services/Component"
-import tpl from "./tpl"
+import Component from '../../../services/Component';
+import tpl from './tpl';
 
 interface INavLink {
     page: string;
@@ -8,11 +8,11 @@ interface INavLink {
 }
 
 export default class NavLink extends Component<INavLink> {
-    constructor(props: INavLink) {
-        super('li', props)
-    }
+  constructor(props: INavLink) {
+    super('li', props);
+  }
 
-    render() {
-        return this.compile(tpl, this._props);
-    }
+  render() {
+    return this.compile(tpl, this._props);
+  }
 }

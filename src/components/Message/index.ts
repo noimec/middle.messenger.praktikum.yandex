@@ -1,5 +1,5 @@
-import Component from "../../services/Component";
-import tpl from "./tpl";
+import Component from '../../services/Component';
+import tpl from './tpl';
 
 interface IMessage {
     own?: string;
@@ -10,11 +10,11 @@ interface IMessage {
 }
 
 export default class Message extends Component<IMessage> {
-    constructor(props: IMessage) {
-        super('div', props)
-    }
-    
-    render() {
-        return this.compile(tpl, this._props)
-    }
+  constructor(props: IMessage) {
+    super('div', props);
+  }
+
+  render() {
+    return this.compile(tpl, this._props);
+  }
 }

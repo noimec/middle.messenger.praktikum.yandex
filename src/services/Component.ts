@@ -1,9 +1,9 @@
-import { v4 as uuidv4 } from "uuid";
-import Handlebars from "handlebars";
-import EventBus from "./EventBus";
+import { v4 as uuidv4 } from 'uuid';
+import Handlebars from 'handlebars';
+import EventBus from './EventBus';
 
 interface IProps{
-  settings?: {withInternalID: string}; 
+  settings?: {withInternalID: string};
   events?: { [eventName: string]: (event: Event) => void };
   attr?: Record<string, string>;
   props?: Record<string, string>;
@@ -17,22 +17,29 @@ type Nullable<T> = T | null;
 
 export default class Component<P extends object> {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render",
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   } as const;
 
   protected _props: IProps;
+
   protected _children;
+
   protected _id: string;
+
   protected _lists;
-  protected _element:  Nullable<HTMLElement> = null;
+
+  protected _element: Nullable<HTMLElement> = null;
+
   protected _meta: { tag: string; props: object };
+
   protected _eventBus: EventBus;
+
   protected _setUpdate = false;
 
-  constructor(tag = "div", propsAndChilds = {}) {
+  constructor(tag = 'div', propsAndChilds = {}) {
     const { children, props, lists } = this.getChildren(propsAndChilds);
 
     this._eventBus = new EventBus();
@@ -50,11 +57,11 @@ export default class Component<P extends object> {
     this._eventBus.on(Component.EVENTS.INIT, this.init.bind(this));
     this._eventBus.on(
       Component.EVENTS.FLOW_CDM,
-      this._componentDidMount.bind(this)
+      this._componentDidMount.bind(this),
     );
     this._eventBus.on(
       Component.EVENTS.FLOW_CDU,
-      this._componentDidUpdate.bind(this)
+      this._componentDidUpdate.bind(this),
     );
     this._eventBus.on(Component.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
@@ -78,7 +85,7 @@ export default class Component<P extends object> {
     const block = this.render();
     this.removeEvents();
     if (this._element && block !== undefined && block !== null) {
-      this._element.innerHTML = "";
+      this._element.innerHTML = '';
       this._element.appendChild(block);
     }
     this.addEvents();
@@ -89,7 +96,7 @@ export default class Component<P extends object> {
 
   addEvents() {
     const { events = {} } = this._props;
-    
+
     Object.keys(events).forEach((eventName) => {
       if (this._element) {
         this._element.addEventListener(eventName, events[eventName]);
@@ -136,25 +143,25 @@ export default class Component<P extends object> {
   }
 
   compile(template: string, props: IProps) {
-    if (typeof (props) == "undefined") {
+    if (typeof (props) === 'undefined') {
       props = this._props;
     }
-    
-    let propsAndStubs: IPropsAndStubs  = {};
 
-    if (typeof (props) == "object") {
-        propsAndStubs = { ...props };
+    let propsAndStubs: IPropsAndStubs = {};
+
+    if (typeof (props) === 'object') {
+      propsAndStubs = { ...props };
     }
 
     Object.entries(this._children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
-    Object.keys(this._lists).forEach(key => {
+    Object.keys(this._lists).forEach((key) => {
       propsAndStubs[key] = `<div data-id="__1_${key}"></div>`;
     });
 
-    const fragment: HTMLTemplateElement  = this.createDocumentElement("template");
+    const fragment: HTMLTemplateElement = this.createDocumentElement('template');
     fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
 
     Object.values(this._children).forEach((child) => {
@@ -178,9 +185,9 @@ export default class Component<P extends object> {
         if (item instanceof Component) {
           listContent.content.append(item.getContent());
         } else {
-          listContent.content.append(`${item}`)
+          listContent.content.append(`${item}`);
         }
-      })
+      });
 
       stub.replaceWith(listContent.content);
     });
@@ -249,7 +256,7 @@ export default class Component<P extends object> {
     return new Proxy(props as unknown as object, {
       get: (target: Record<string, unknown>, prop: string) => {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set: (target: Record<string, unknown>, prop: string, value: unknown) => {
         if (target[prop] !== value) {
@@ -259,7 +266,7 @@ export default class Component<P extends object> {
         return true;
       },
       deleteProperty() {
-        throw new Error("Нет доступа.");
+        throw new Error('Нет доступа.');
       },
     }) as unknown as P;
   }
@@ -269,10 +276,10 @@ export default class Component<P extends object> {
   }
 
   show() {
-    this.getContent().style.display = "block";
+    this.getContent().style.display = 'block';
   }
 
   hide() {
-    this.getContent().style.display = "none";
+    this.getContent().style.display = 'none';
   }
 }
