@@ -10,4 +10,4 @@ app.get('/', (_req, res) => {
   res.sendFile(resolve(__dirname, 'dist/index.html'));
 });
 
-app.listen(PORT, () => `\nApp Messenger started on port ${PORT} \nlocal - http://localhost:3000/`);
+app.listen(PORT);
