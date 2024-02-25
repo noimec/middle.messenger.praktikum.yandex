@@ -13,8 +13,9 @@ interface IAuth {
 
 export default class Auth extends Component<IAuth> {
     constructor(props: IAuth) {
-        super('main', props)
+        super('div', props)
     }
+    
     render() {
         return this.compile(tpl, this._props);
     }

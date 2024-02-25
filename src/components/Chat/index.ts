@@ -21,7 +21,7 @@ interface IChat {
 
 export default class Chat extends Component<IChat> {
     constructor(props: IChat) {
-        super('main', props)
+        super('div', props)
     }
 
     render() {

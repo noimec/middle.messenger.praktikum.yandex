@@ -1,6 +1,6 @@
 const tpl = `
     <div class="flex back__wrapper">
-         back-icon
+         {{{backBtn}}}
     </div>
 
     <section class="profile flex">

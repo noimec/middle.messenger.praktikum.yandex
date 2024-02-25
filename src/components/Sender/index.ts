@@ -13,7 +13,8 @@ export default class Sender extends Component<ISender> {
     constructor(props: ISender) {
         super('li', props)
     }
-    render(): void {
+    
+    render() {
         return this.compile(tpl, this._props)
     }
 }

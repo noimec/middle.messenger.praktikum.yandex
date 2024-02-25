@@ -11,6 +11,7 @@ export default class Dialog extends Component<IDialog> {
     constructor(props: IDialog) {
         super('div', props)
     }
+    
     render() {
         return this.compile(tpl, this._props)
     }

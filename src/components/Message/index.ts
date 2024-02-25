@@ -13,7 +13,8 @@ export default class Message extends Component<IMessage> {
     constructor(props: IMessage) {
         super('div', props)
     }
-    render(): void {
+    
+    render() {
         return this.compile(tpl, this._props)
     }
 }

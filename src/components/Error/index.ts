@@ -11,11 +11,10 @@ interface Err {
 
 export default class Error extends Component<Err> {
     constructor(props: Err) {
-        super('main', props)
+        super('div', props)
     }
+    
     render() {
-
-
         return this.compile(tpl, this._props);
     }
 }

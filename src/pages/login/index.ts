@@ -21,21 +21,21 @@ export default class LoginPage {
             fields: [
                 new AuthField({
                     label: 'Логин', name: 'login', authInput: [new Input({
-                        attr: { class: 'form__input reset-input sign-input', type: 'text', name: 'login', id: 'login', dataValid: false }, events: {
+                        attr: { class: 'form__input reset-input', type: 'text', name: 'login', id: 'login', dataValid: false }, events: {
                             onBlur: (element) => { this.validateInput(element) }
                         }
                     })], attr: { class: "form__item flex" }
                 }),
                 new AuthField({
                     label: 'Пароль', name: 'password', authInput: [new Input({
-                        attr: { class: 'form__input reset-input sign-input', type: 'text', name: 'password', id: 'password', dataValid: false }, events: {
+                        attr: { class: 'form__input reset-input', type: 'text', name: 'password', id: 'password', dataValid: false }, events: {
                             onBlur: (element) => { this.validateInput(element) }
                         }
                     })], attr: { class: "form__item flex" }
                 }),
             ],
             attr: {
-                class: "main flex"
+                class: "container flex"
             }
         })
     }

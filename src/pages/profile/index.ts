@@ -14,6 +14,7 @@ export default class ProfilePage {
             changePassBtn: [new Button({ value: 'Изменить пароль', attr: { class: 'profile__item_blue reset-btn' } })],
             exitBtn: [new Button({ value: 'Выйти', attr: { class: 'profile__item_red reset-btn' } })],
             saveBtn: [new Button({ value: 'Сохранить', attr: { class: 'reset-btn action-button profile__save-btn' } })],
+            backBtn:[new Button({ value: '',src: '../static/icons/back-icon.svg', attr: { class: 'reset-btn' } })],
             fields: [
                 new ProfileField({ name: "email", label: "Почта", profileInput: [new Input({ attr: { class: 'profile__input reset-input', type: 'text', value: 'pochta@yandex.ru', name: 'email', id: 'email' } })], attr: { class: "profile__item" } }),
                 new ProfileField({ name: "login", label: "Логин", profileInput: [new Input({ attr: { class: 'profile__input reset-input', type: 'text', value: 'ivanivanov', name: 'login', id: 'login' } })], attr: { class: "profile__item" } }),
@@ -28,7 +29,7 @@ export default class ProfilePage {
                 new ProfileField({ name: "newPassword", label: "Повторите новый пароль", profileInput: [new Input({ attr: { class: 'profile__input reset-input', type: 'text', value: '******', name: 'newPassword', id: 'newPassword' } })], attr: { class: "profile__item" } }),
             ],
             attr: {
-                class: "main flex"
+                class: "container flex"
             }
         })
     }

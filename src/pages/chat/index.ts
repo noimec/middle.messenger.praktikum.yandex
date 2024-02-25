@@ -101,15 +101,15 @@ export default class ChatPage {
         this.chatInstance = new Chat({
             senders: this.senderArray,
             dialog: this.dialogData,
-            messageInput: [new Input({ attr: { class: 'chat__message reset-input', type: 'text', placeholder: 'Сообщение', name: 'message' } })],
-            senderIconBtn: [new Button({ value: '', attr: { class: 'chat__icon reset-btn' } })],
-            searchInput: [new Input({ attr: { class: 'sidebar__input reset-input', type: 'text', placeholder: 'Поиск' } })],
             profileLink: [new Link({ value: 'Профиль', attr: { class: 'sidebar__link reset-link', href: './profile' } })],
-            attachBtn: [new Button({ value: 'attach-icon', attr: { class: 'chat__attach-btn reset-btn' } })],
-            backBtn: [new Button({ value: 'back-icon', attr: { class: 'chat__send-btn reset-btn' } })],
-            menuBtn: [new Button({ value: 'menu-icon', attr: { class: 'chat__menu reset-btn' } })],
+            messageInput: [new Input({ attr: { class: 'chat__message reset-input', type: 'text', placeholder: 'Сообщение', name: 'message' } })],
+            searchInput: [new Input({ attr: { class: 'sidebar__input reset-input', type: 'text', placeholder: 'Поиск' } })],
+            senderIconBtn: [new Button({ value: '' , attr: { class: 'chat__icon reset-btn' } })],
+            attachBtn: [new Button({ value: '', src: '../static/icons/attach-icon.svg', attr: { class: 'chat__attach-btn reset-btn' } })],
+            backBtn: [new Button({ value: '',src: '../static/icons/back-icon.svg', attr: { class: 'chat__send-btn reset-btn' } })],
+            menuBtn: [new Button({ value: '',src: '../static/icons/menu-icon.svg', attr: { class: 'chat__menu reset-btn' } })],
             attr: {
-                class: "main flex"
+                class: "container flex"
             }
         });
     }

@@ -13,7 +13,8 @@ export default class ProfileField extends Component<IProfileField> {
     constructor(props: IProfileField) {
         super('li', props)
     }
-    render(): void {
+    
+    render() {
         return this.compile(tpl, this._props)
     }
 }

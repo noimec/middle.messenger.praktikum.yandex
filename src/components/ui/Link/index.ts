@@ -11,7 +11,7 @@ export default class Link extends Component<ILink> {
         super('a', props)
     }
 
-    render(): void {
+    render() {
         return this.compile(tpl, this._props)
     }
 }

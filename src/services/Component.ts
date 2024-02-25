@@ -2,6 +2,19 @@ import { v4 as uuidv4 } from "uuid";
 import Handlebars from "handlebars";
 import EventBus from "./EventBus";
 
+interface IProps{
+  settings?: {withInternalID: string}; 
+  events?: { [eventName: string]: (event: Event) => void };
+  attr?: Record<string, string>;
+  props?: Record<string, string>;
+}
+
+interface IPropsAndStubs extends IProps {
+  [key: string]: unknown;
+}
+
+type Nullable<T> = T | null;
+
 export default class Component<P extends object> {
   static EVENTS = {
     INIT: "init",
@@ -10,14 +23,14 @@ export default class Component<P extends object> {
     FLOW_RENDER: "flow:render",
   } as const;
 
-  _props;
-  _children;
-  _id;
-  _lists;
-  _element: HTMLElement | null = null;
-  _meta: { tag: string; props: object };
-  _eventBus: EventBus;
-  _setUpdate = false;
+  protected _props: IProps;
+  protected _children;
+  protected _id: string;
+  protected _lists;
+  protected _element:  Nullable<HTMLElement> = null;
+  protected _meta: { tag: string; props: object };
+  protected _eventBus: EventBus;
+  protected _setUpdate = false;
 
   constructor(tag = "div", propsAndChilds = {}) {
     const { children, props, lists } = this.getChildren(propsAndChilds);
@@ -46,37 +59,41 @@ export default class Component<P extends object> {
     this._eventBus.on(Component.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  init() {
+  init(): void {
     this._element = this.createDocumentElement(this._meta?.tag);
     this._eventBus.emit(Component.EVENTS.FLOW_RENDER);
   }
 
-  createDocumentElement(tag: string) {
+  createDocumentElement(tag: string): HTMLTemplateElement {
     const element = document.createElement(tag);
 
     if (this._props.settings?.withInternalID) {
-      element.setAttribute("data-id", this._id);
+      element.setAttribute('data-id', this._id);
     }
 
-    return element;
+    return element as HTMLTemplateElement;
   }
 
   _render() {
     const block = this.render();
     this.removeEvents();
-    this._element.innerHTML = "";
-    this._element.appendChild(block);
+    if (this._element && block !== undefined && block !== null) {
+      this._element.innerHTML = "";
+      this._element.appendChild(block);
+    }
     this.addEvents();
     this.addAttribute();
   }
 
-  render() { }
+  render() {}
 
   addEvents() {
     const { events = {} } = this._props;
-
+    
     Object.keys(events).forEach((eventName) => {
-      this._element.addEventListener(eventName, events[eventName]);
+      if (this._element) {
+        this._element.addEventListener(eventName, events[eventName]);
+      }
     });
   }
 
@@ -84,7 +101,9 @@ export default class Component<P extends object> {
     const { events = {} } = this._props;
 
     Object.keys(events).forEach((eventName) => {
-      this._element.removeEventListener(eventName, events[eventName]);
+      if (this._element) {
+        this._element.removeEventListener(eventName, events[eventName]);
+      }
     });
   }
 
@@ -92,14 +111,16 @@ export default class Component<P extends object> {
     const { attr = {} } = this._props;
 
     Object.entries(attr).forEach(([key, value]) => {
-      this._element.setAttribute(key, value);
+      if (this._element) {
+        this._element.setAttribute(key, value);
+      }
     });
   }
 
-  getChildren(propsAndChilds) {
-    const children = {};
-    const props = {};
-    const lists = {};
+  getChildren(propsAndChilds: Record<string, P>) {
+    const children: Record<string, P> = {};
+    const props: Record<string, P> = {};
+    const lists: Record<string, P> = {};
 
     Object.keys(propsAndChilds).forEach((key) => {
       if (propsAndChilds[key] instanceof Component) {
@@ -114,22 +135,26 @@ export default class Component<P extends object> {
     return { children, props, lists };
   }
 
-  compile(template, props) {
+  compile(template: string, props: IProps) {
     if (typeof (props) == "undefined") {
       props = this._props;
     }
+    
+    let propsAndStubs: IPropsAndStubs  = {};
 
-    const propsAndStubs = { ...props };
+    if (typeof (props) == "object") {
+        propsAndStubs = { ...props };
+    }
 
     Object.entries(this._children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
-    Object.entries(this._lists).forEach(([key, child]) => {
+    Object.keys(this._lists).forEach(key => {
       propsAndStubs[key] = `<div data-id="__1_${key}"></div>`;
     });
 
-    const fragment = this.createDocumentElement("template");
+    const fragment: HTMLTemplateElement  = this.createDocumentElement("template");
     fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
 
     Object.values(this._children).forEach((child) => {
@@ -147,9 +172,9 @@ export default class Component<P extends object> {
         return;
       }
 
-      const listContent = this.createDocumentElement('template');
+      const listContent: HTMLTemplateElement = this.createDocumentElement('template');
 
-      child.forEach(item => {
+      child.forEach((item: Component<P>) => {
         if (item instanceof Component) {
           listContent.content.append(item.getContent());
         } else {
@@ -180,8 +205,8 @@ export default class Component<P extends object> {
     }
   }
 
-  _componentDidUpdate(oldProps, newProps) {
-    const isReRender = this.componentDidUpdate(oldProps, newProps);
+  _componentDidUpdate() {
+    const isReRender = this.componentDidUpdate();
 
     if (isReRender) {
       this._eventBus.emit(Component.EVENTS.FLOW_RENDER);
@@ -192,7 +217,7 @@ export default class Component<P extends object> {
     return true;
   }
 
-  setProps(newProps) {
+  setProps(newProps: Record<string, P>) {
     if (!newProps) {
       return;
     }

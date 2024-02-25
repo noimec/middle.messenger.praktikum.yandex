@@ -13,7 +13,8 @@ export default class AuthField extends Component<IAuthField> {
     constructor(props: IAuthField) {
         super('div', props)
     }
-    render(): void {
+    
+    render() {
         return this.compile(tpl, this._props);
     }
 }
