@@ -1,18 +1,18 @@
-import Component from '../../services/Component';
-import Message from '../Message';
-import tpl from './tpl';
+import Component from '../../services/Component.ts';
+import Message from '../Message/index.ts';
+import tpl from './tpl.ts';
 
 interface IDialog {
-    date: string;
-    messages: Message[]
+  date: string;
+  messages: Message[];
 }
 
-export default class Dialog extends Component<IDialog> {
+export default class Dialog extends Component<object> {
   constructor(props: IDialog) {
     super('div', props);
   }
 
   render() {
-    return this.compile(tpl, this._props);
+    return this.compile(tpl, this.props);
   }
 }

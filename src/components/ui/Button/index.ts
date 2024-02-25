@@ -1,16 +1,16 @@
-import Component from '../../../services/Component';
-import tpl from './tpl';
+import Component from '../../../services/Component.ts';
+import tpl from './tpl.ts';
 
 interface IButton {
-    value: string;
-    attr?: {};
-    src?: string;
-    events?: {
-        onClick?: () => void;
-    };
+  value: string;
+  attr?: object;
+  src?: string;
+  events?: {
+    onClick?: () => void;
+  };
 }
 
-export default class Button extends Component<IButton> {
+export default class Button extends Component<object> {
   constructor(props: IButton) {
     super('button', props);
 
@@ -21,7 +21,7 @@ export default class Button extends Component<IButton> {
 
   onClick(handler?: () => void) {
     if (handler) {
-      this._element?.addEventListener('click', (e) => {
+      this.element?.addEventListener('click', (e) => {
         e.preventDefault();
         handler();
       });
@@ -29,6 +29,6 @@ export default class Button extends Component<IButton> {
   }
 
   render() {
-    return this.compile(tpl, this._props);
+    return this.compile(tpl, this.props);
   }
 }

@@ -1,6 +1,6 @@
-import Nav from './components/Nav';
-import NavLink from './components/ui/NavLink';
-import ChatPage from './pages/chat';
+import Nav from './components/Nav/index.ts';
+import NavLink from './components/ui/NavLink/index.ts';
+import ChatPage from './pages/chat/index.ts';
 
 const root = document.querySelector('#app');
 
@@ -9,9 +9,17 @@ const nav = new Nav({
     new NavLink({ page: '500', text: '500', attr: { class: 'nav__item' } }),
     new NavLink({ page: '404', text: '404', attr: { class: 'nav__item' } }),
     new NavLink({ page: 'chat', text: 'Чат', attr: { class: 'nav__item' } }),
-    new NavLink({ page: 'profile', text: 'Профиль', attr: { class: 'nav__item' } }),
+    new NavLink({
+      page: 'profile',
+      text: 'Профиль',
+      attr: { class: 'nav__item' },
+    }),
     new NavLink({ page: 'login', text: 'Вход', attr: { class: 'nav__item' } }),
-    new NavLink({ page: 'signin', text: 'Регистрация', attr: { class: 'nav__item' } }),
+    new NavLink({
+      page: 'signin',
+      text: 'Регистрация',
+      attr: { class: 'nav__item' },
+    }),
   ],
   attr: {
     class: 'nav flex',
@@ -20,6 +28,18 @@ const nav = new Nav({
 
 const chatPage = new ChatPage().getContent();
 const navElement = nav.getContent();
+
+const loadPage = async (pageName: string) => {
+  const { default: Page } = await import(`./pages/${pageName}/index.ts`);
+  const page = new Page({});
+  const pageElement = page.getContent();
+
+  if (root) {
+    root.innerHTML = '';
+    root.appendChild(navElement);
+    root.appendChild(pageElement);
+  }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   root?.appendChild(navElement);
@@ -39,15 +59,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
-const loadPage = async (pageName: string) => {
-  const { default: Page } = await import(`./pages/${pageName}/index.ts`);
-  const page = new Page({});
-  const pageElement = page.getContent();
-
-  if (root) {
-    root.innerHTML = '';
-    root.appendChild(navElement);
-    root.appendChild(pageElement);
-  }
-};

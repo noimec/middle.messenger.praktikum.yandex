@@ -1,22 +1,22 @@
-import Component from '../../services/Component';
-import AuthField from '../AuthField';
-import Button from '../ui/Button';
-import tpl from './tpl';
+import Component from '../../services/Component.ts';
+import AuthField from '../AuthField/index.ts';
+import Button from '../ui/Button/index.ts';
+import tpl from './tpl.ts';
 
 interface IAuth {
-    title: string;
-    fields: AuthField[];
-    actionBtn: Button[];
-    commonBtn: Button[];
-    attr: {};
+  title: string;
+  fields: AuthField[];
+  actionBtn: Button[];
+  commonBtn: Button[];
+  attr: object;
 }
 
-export default class Auth extends Component<IAuth> {
+export default class Auth extends Component<object> {
   constructor(props: IAuth) {
     super('div', props);
   }
 
   render() {
-    return this.compile(tpl, this._props);
+    return this.compile(tpl, this.props);
   }
 }

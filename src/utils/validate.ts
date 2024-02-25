@@ -1,11 +1,14 @@
-interface IValidate { isValid: boolean, errorMessage: string }
+interface IValidate {
+  isValid: boolean;
+  errorMessage: string;
+}
 
 function validateField(fieldName: string, value: string): IValidate {
   switch (fieldName) {
     case 'first_name':
     case 'second_name':
       return {
-        isValid: /^[A-ZА-Я][a-zа-я\-]*$/.test(value),
+        isValid: /^[A-ZА-Я][a-zа-я\s-]*$/.test(value),
         errorMessage: 'С заглавной буквы без пробелов и символов',
       };
     case 'login':
