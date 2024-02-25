@@ -1,19 +1,19 @@
-import Component from '../../services/Component';
-import HeaderLink from '../ui/NavLink';
-import tpl from './tpl';
+import Component from '../../services/Component.ts';
+import HeaderLink from '../ui/NavLink/index.ts';
+import tpl from './tpl.ts';
 
 interface NavProps {
-    className?: string;
-    links: HeaderLink[];
-    attr: {}
+  className?: string;
+  links: HeaderLink[];
+  attr: object;
 }
 
-export default class Nav extends Component<NavProps> {
+export default class Nav extends Component<object> {
   constructor(props: NavProps) {
     super('nav', props);
   }
 
   render() {
-    return this.compile(tpl, this._props);
+    return this.compile(tpl, this.props);
   }
 }

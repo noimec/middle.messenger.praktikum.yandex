@@ -1,20 +1,20 @@
-enum METHODS {
-    GET = 'GET',
-    POST = 'POST',
-    PUT = 'PUT',
-    DELETE = 'DELETE',
-}
+const Methods = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE',
+};
 
 interface IRequestOptions {
-    method?: METHODS;
-    data?: Record<string, string>;
-    timeout?: number;
-    headers?: Record<string, string>;
-    retries?: number;
+  method?: string;
+  data?: Record<string, string>;
+  timeout?: number;
+  headers?: Record<string, string>;
+  retries?: number;
 }
 
 interface IHTTPMethod {
-    (url: string, options?: IRequestOptions): Promise<unknown>;
+  (url: string, options?: IRequestOptions): Promise<unknown>;
 }
 
 const queryStringify = (data: Record<string, string>) => {
@@ -31,24 +31,36 @@ const queryStringify = (data: Record<string, string>) => {
 };
 
 export default class Fetch {
-  get: IHTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+  static get: IHTTPMethod = (url, options = {}) => Fetch.request(url, {
+    ...options,
+    method: Methods.GET,
+  }, options.timeout);
 
-  post: IHTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+  static post: IHTTPMethod = (url, options = {}) => Fetch.request(url, {
+    ...options,
+    method: Methods.POST,
+  }, options.timeout);
 
-  put: IHTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+  static put: IHTTPMethod = (url, options = {}) => Fetch.request(url, {
+    ...options,
+    method: Methods.PUT,
+  }, options.timeout);
 
-  delete: IHTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+  static delete: IHTTPMethod = (url, options = {}) => Fetch.request(url, {
+    ...options,
+    method: Methods.DELETE,
+  }, options.timeout);
 
-  request = (url: string, options: IRequestOptions = {}, timeout = 5000) => {
+  static request(url: string, options: IRequestOptions = {}, timeout = 5000) {
     const { headers = {}, method, data } = options;
 
     return new Promise((resolve, reject) => {
       if (!method) {
-        reject('No method');
+        reject(new Error('No method'));
         return;
       }
       const xhr = new XMLHttpRequest();
-      const isGet = method === METHODS.GET;
+      const isGet = method === Methods.GET;
 
       xhr.open(method, isGet && !!data ? url + queryStringify(data) : url);
 
@@ -69,5 +81,5 @@ export default class Fetch {
         xhr.send(JSON.stringify(data));
       }
     });
-  };
+  }
 }

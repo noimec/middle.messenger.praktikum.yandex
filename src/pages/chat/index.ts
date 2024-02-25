@@ -1,10 +1,10 @@
-import Chat from '../../components/Chat';
-import Dialog from '../../components/Dialog';
-import Message from '../../components/Message';
-import Sender from '../../components/Sender';
-import Button from '../../components/ui/Button';
-import Input from '../../components/ui/Input';
-import Link from '../../components/ui/Link';
+import Chat from '../../components/Chat/index.ts';
+import Dialog from '../../components/Dialog/index.ts';
+import Message from '../../components/Message/index.ts';
+import Sender from '../../components/Sender/index.ts';
+import Button from '../../components/ui/Button/index.ts';
+import Input from '../../components/ui/Input/index.ts';
+import Link from '../../components/ui/Link/index.ts';
 
 export default class ChatPage {
   private chatInstance: Chat;
@@ -20,15 +20,7 @@ export default class ChatPage {
         messages: [
           new Message({
             sender: 'sender',
-            text: `Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
-                                попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
-                                астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на
-                                поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-        
-                                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так
-                                никогда
-                                и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000
-                                евро.`,
+            text: 'Привет! Смотри, тут всплыл интересный ',
             time: '11:52',
           }),
           new Message({
@@ -47,10 +39,7 @@ export default class ChatPage {
         messages: [
           new Message({
             sender: 'sender',
-            text: `Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
-                                попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
-                                астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на
-                                поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой..`,
+            text: 'Привет! Смотри, тут ',
             time: '12:42',
           }),
           new Message({
@@ -69,15 +58,7 @@ export default class ChatPage {
         messages: [
           new Message({
             sender: 'sender',
-            text: `Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
-                                попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
-                                астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на
-                                поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-        
-                                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так
-                                никогда
-                                и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000
-                                евро.`,
+            text: 'Привет! Смотри, тут всплыл',
             time: '11:52',
           }),
           new Message({
@@ -95,33 +76,85 @@ export default class ChatPage {
 
     this.senderArray = [
       new Sender({
-        name: 'Андрей', sender_message: 'Изображение', date: '10:49', message_count: '1', attr: { class: 'sidebar__item' },
+        name: 'Андрей',
+        sender_message: 'Изображение',
+        date: '10:49',
+        message_count: '1',
+        attr: { class: 'sidebar__item' },
       }),
       new Sender({
-        name: 'Илья', sender_message: 'И Human Interface Guidelines и Material Design рекомендуют...', date: '11:59', message_count: '3', attr: { class: 'sidebar__item' },
+        name: 'Илья',
+        sender_message: 'И Human Interface Guidelines и Material Design рекомендуют...',
+        date: '11:59',
+        message_count: '3',
+        attr: { class: 'sidebar__item' },
       }),
       new Sender({
-        name: 'Киноклуб', sender_message: 'В 2008 году художник Jon Rafman  начал собирать', date: '13:29', message_count: '2', attr: { class: 'sidebar__item' },
+        name: 'Киноклуб',
+        sender_message: 'В 2008 году художник Jon Rafman  начал собирать',
+        date: '13:29',
+        message_count: '2',
+        attr: { class: 'sidebar__item' },
       }),
       new Sender({
-        name: 'Day.', sender_message: 'Миллионы россиян ежедневно проводят десятки часов свое', date: '16:20', message_count: '10', attr: { class: 'sidebar__item' },
+        name: 'Day.',
+        sender_message: 'Миллионы россиян ежедневно проводят десятки часов свое',
+        date: '16:20',
+        message_count: '10',
+        attr: { class: 'sidebar__item' },
       }),
     ];
 
     this.chatInstance = new Chat({
       senders: this.senderArray,
       dialog: this.dialogData,
-      profileLink: [new Link({ value: 'Профиль', attr: { class: 'sidebar__link reset-link', href: './profile' } })],
-      messageInput: [new Input({
-        attr: {
-          class: 'chat__message reset-input', type: 'text', placeholder: 'Сообщение', name: 'message',
-        },
-      })],
-      searchInput: [new Input({ attr: { class: 'sidebar__input reset-input', type: 'text', placeholder: 'Поиск' } })],
+      profileLink: [
+        new Link({
+          value: 'Профиль',
+          attr: { class: 'sidebar__link reset-link', href: './profile' },
+        }),
+      ],
+      messageInput: [
+        new Input({
+          attr: {
+            class: 'chat__message reset-input',
+            type: 'text',
+            placeholder: 'Сообщение',
+            name: 'message',
+          },
+        }),
+      ],
+      searchInput: [
+        new Input({
+          attr: {
+            class: 'sidebar__input reset-input',
+            type: 'text',
+            placeholder: 'Поиск',
+          },
+        }),
+      ],
       senderIconBtn: [new Button({ value: '', attr: { class: 'chat__icon reset-btn' } })],
-      attachBtn: [new Button({ value: '', src: '../static/icons/attach-icon.svg', attr: { class: 'chat__attach-btn reset-btn' } })],
-      backBtn: [new Button({ value: '', src: '../static/icons/back-icon.svg', attr: { class: 'chat__send-btn reset-btn' } })],
-      menuBtn: [new Button({ value: '', src: '../static/icons/menu-icon.svg', attr: { class: 'chat__menu reset-btn' } })],
+      attachBtn: [
+        new Button({
+          value: '',
+          src: '../static/icons/attach-icon.svg',
+          attr: { class: 'chat__attach-btn reset-btn' },
+        }),
+      ],
+      backBtn: [
+        new Button({
+          value: '',
+          src: '../static/icons/back-icon.svg',
+          attr: { class: 'chat__send-btn reset-btn' },
+        }),
+      ],
+      menuBtn: [
+        new Button({
+          value: '',
+          src: '../static/icons/menu-icon.svg',
+          attr: { class: 'chat__menu reset-btn' },
+        }),
+      ],
       attr: {
         class: 'container flex',
       },

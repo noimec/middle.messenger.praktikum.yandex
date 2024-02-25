@@ -1,14 +1,14 @@
-import Component from '../../../services/Component';
-import tpl from './tpl';
+import Component from '../../../services/Component.ts';
+import tpl from './tpl.ts';
 
 interface IInput {
-    attr: {}
-    events?: {
-        onBlur?: (element: HTMLInputElement) => void;
-    };
+  attr: object;
+  events?: {
+    onBlur?: (element: HTMLInputElement) => void;
+  };
 }
 
-export default class Input extends Component<IInput> {
+export default class Input extends Component<object> {
   constructor(props: IInput) {
     super('input', props);
     if (props.events?.onBlur) {
@@ -17,16 +17,16 @@ export default class Input extends Component<IInput> {
   }
 
   onBlur(handler?: (element: HTMLInputElement) => void) {
-    const element = this._element as HTMLInputElement;
+    const element = this.element as HTMLInputElement;
 
     if (handler) {
-      this._element?.addEventListener('blur', () => {
+      this.element?.addEventListener('blur', () => {
         handler(element);
       });
     }
   }
 
   render() {
-    return this.compile(tpl, this._props);
+    return this.compile(tpl, this.props);
   }
 }
