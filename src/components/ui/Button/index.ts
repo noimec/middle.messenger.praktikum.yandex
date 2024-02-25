@@ -4,6 +4,7 @@ import tpl from "./tpl";
 interface IButton {
     value: string;
     attr?: {};
+    src?: string;
     events?: {
         onClick?: () => void;
     };

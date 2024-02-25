@@ -1,18 +1,18 @@
 import Component from "../../services/Component";
-import HeaderLink from "../ui/HeaderLink";
+import HeaderLink from "../ui/NavLink";
 import tpl from "./tpl";
 
-
-interface HeaderProps {
+interface NavProps {
     className?: string;
     links: HeaderLink[];
     attr: {}
 }
 
-export default class Header extends Component<HeaderProps> {
-    constructor(props: HeaderProps) {
-        super('header', props)
+export default class Nav extends Component<NavProps> {
+    constructor(props: NavProps) {
+        super('nav', props)
     }
+    
     render() {
         return this.compile(tpl, this._props);
     }

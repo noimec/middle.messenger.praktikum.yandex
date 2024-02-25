@@ -21,49 +21,49 @@ export default class SigninPage {
             fields: [
                 new AuthField({
                     label: 'Почта', name: 'email', authInput: [new Input({
-                        attr: { class: 'form__input reset-input sign-input', type: 'text', name: 'email', id: 'email', dataValid: false }, events: {
+                        attr: { class: 'form__input reset-input', type: 'text', name: 'email', id: 'email', dataValid: false }, events: {
                             onBlur: (element) => { this.validateInput(element) }
                         }
                     })], attr: { class: 'form__item flex' }
                 }),
                 new AuthField({
                     label: 'Логин', name: 'login', authInput: [new Input({
-                        attr: { class: 'form__input reset-input sign-input', type: 'text', name: 'login', id: 'login', dataValid: false }, events: {
+                        attr: { class: 'form__input reset-input', type: 'text', name: 'login', id: 'login', dataValid: false }, events: {
                             onBlur: (element) => { this.validateInput(element) }
                         }
                     })], attr: { class: "form__item flex" }
                 }),
                 new AuthField({
                     label: 'Имя', name: 'first_name', authInput: [new Input({
-                        attr: { class: 'form__input reset-input sign-input', type: 'text', name: 'first_name', id: 'first_name', dataValid: false }, events: {
+                        attr: { class: 'form__input reset-input', type: 'text', name: 'first_name', id: 'first_name', dataValid: false }, events: {
                             onBlur: (element) => { this.validateInput(element) }
                         }
                     })], attr: { class: "form__item flex" }
                 }),
                 new AuthField({
                     label: 'Фамилия', name: 'second_name', authInput: [new Input({
-                        attr: { class: 'form__input reset-input sign-input', type: 'text', name: 'second_name', id: 'second_name', dataValid: false }, events: {
+                        attr: { class: 'form__input reset-input', type: 'text', name: 'second_name', id: 'second_name', dataValid: false }, events: {
                             onBlur: (element) => { this.validateInput(element) }
                         }
                     })], attr: { class: "form__item flex" }
                 }),
                 new AuthField({
                     label: 'Телефон', name: 'phone', authInput: [new Input({
-                        attr: { class: 'form__input reset-input sign-input', type: 'text', name: 'phone', id: 'phone', dataValid: false }, events: {
+                        attr: { class: 'form__input reset-input', type: 'text', name: 'phone', id: 'phone', dataValid: false }, events: {
                             onBlur: (element) => { this.validateInput(element) }
                         }
                     })], attr: { class: "form__item flex" }
                 }),
                 new AuthField({
                     label: 'Пароль', name: 'password', authInput: [new Input({
-                        attr: { class: 'form__input reset-input sign-input', type: 'text', name: 'password', id: 'password', dataValid: false }, events: {
+                        attr: { class: 'form__input reset-input', type: 'text', name: 'password', id: 'password', dataValid: false }, events: {
                             onBlur: (element) => { this.validateInput(element) }
                         }
                     })], attr: { class: "form__item flex" }
                 }),
             ],
             attr: {
-                class: "main flex"
+                class: "container flex"
             }
         })
     }

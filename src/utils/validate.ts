@@ -1,49 +1,59 @@
-function validateField(fieldName: string, value: string): boolean {
+function validateField(fieldName: string, value: string): { isValid: boolean, errorMessage: string } {
     switch (fieldName) {
         case 'first_name':
         case 'second_name':
-            return /^[А-Яа-яA-Za-z]+(?:-[А-Яа-яA-Za-z]+)?$/.test(value);
+            return {
+                ///^[А-Яа-яA-Za-z]+(?:-[А-Яа-яA-Za-z]+)?$/
+                isValid: /^[A-ZА-Я][a-zа-я\-]*$/.test(value),
+                errorMessage: 'С заглавной буквы без пробелов и символов',
+            };
         case 'login':
-            return /^[A-Za-z][A-Za-z0-9_-]{2,19}$/.test(value);
+            return {
+                isValid: /^[A-Za-z][A-Za-z0-9_-]{2,19}$/.test(value),
+                errorMessage: 'Непраильно укзан логин',
+            };
         case 'email':
-            return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/.test(value);
+            return {
+                isValid: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/.test(value),
+                errorMessage: 'Адрес указан неверно',
+            };
         case 'password':
-            return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,40}$/.test(value);
+            return {
+                isValid: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,40}$/.test(value),
+                errorMessage: 'Неправильно указан пароль',
+            };
         case 'phone':
-            return /^\+?\d{10,15}$/.test(value);
+            return {
+                isValid: /^\+?\d{10,15}$/.test(value),
+                errorMessage: 'Неправильно указан номер',
+            };
         default:
-            return true;
+            return {
+                isValid: true,
+                errorMessage: 'Заполните поле',
+            };
     }
 }
 
-function collectFormData(): Record<string, string> {
-    const formData: Record<string, string> = {};
-
-    const inputs = document.querySelectorAll('.sign-input');
-
-    inputs.forEach((input: HTMLInputElement) => {
-        formData[input.name] = input.value;
-    });
-
-    return formData;
-}
-
-export function validateInput(input: HTMLInputElement): void {
+export function validateInput(input: HTMLInputElement) {
     const fieldName = input.name;
     const value = input.value;
-    const errorDivId = `${fieldName}-error`;
-    const existingErrorDiv = document.getElementById(errorDivId);
+    const errorDivClass = `${fieldName}-error`;
+    const existingErrorDiv = input.parentNode?.querySelector(`.${errorDivClass}`);
 
-    if (!validateField(fieldName, value)) {
-        input.classList.add('invalid')
-        input.setAttribute('dataValid', 'false')
+    const { isValid, errorMessage } = validateField(fieldName, value);
+
+    if (!isValid) {
+        input.classList.add('invalid');
+        input.setAttribute('dataValid', 'false');
+
         if (existingErrorDiv) {
-            existingErrorDiv.textContent = `Invalid ${fieldName} field`;
+            existingErrorDiv.textContent = errorMessage;
         } else {
             const errorDiv = document.createElement('div');
             errorDiv.classList.add('error__message');
-            errorDiv.id = errorDivId;
-            errorDiv.textContent = `Invalid ${fieldName} field`;
+            errorDiv.classList.add(errorDivClass);
+            errorDiv.textContent = errorMessage;
             input.parentNode?.insertBefore(errorDiv, input.nextSibling);
         }
 
@@ -52,29 +62,30 @@ export function validateInput(input: HTMLInputElement): void {
         if (existingErrorDiv) {
             existingErrorDiv.remove();
         }
-        input.classList.remove('invalid')
-        input.removeAttribute('dataValid')
+
+        input.classList.remove('invalid');
+        input.removeAttribute('dataValid');
     }
 }
 
 export function validateForm() {
-    const inputs = document.querySelectorAll('.sign-input');
+    const inputs = document.querySelectorAll('.form__input') as NodeListOf<HTMLInputElement>;;
+    const formData: Record<string, string> = {};
     let valid = false;
 
-    for (const input of inputs) {
+    inputs.forEach((input) => {
         if (input.getAttribute('dataValid')) {
             valid = false
         } else {
             valid = true;
         }
-    }
+
+        formData[input.name] = input.value;
+
+        validateInput(input);
+    })
 
     if (valid) {
-        const formData = collectFormData();
         console.log('Form data:', formData);
     }
-
-    inputs.forEach((input: HTMLInputElement) => {
-        validateInput(input);
-    });
 }

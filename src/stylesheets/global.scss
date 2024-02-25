@@ -63,7 +63,7 @@ $error-red: #FF0000;
   color: $primary-accent;
 }
 
-.main {
+.container {
   margin: 0 auto;
   position: relative;
   height: 100vh;
@@ -103,7 +103,7 @@ $error-red: #FF0000;
   color: $primary-accent;
 }
 
-@import '../../src/components/Header/header.scss';
+@import '../../src/components/Nav/nav.scss';
 @import '../../src/components/Auth/auth.scss';
 @import '../../src/components/AuthField/authField.scss';
 @import '../../src/components/Chat/chat.scss';

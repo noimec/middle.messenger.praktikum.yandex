@@ -12,15 +12,16 @@ interface IProfile {
     changePassBtn: Button[];
     exitBtn: Button[];
     avatarBtn: Button[];
+    backBtn: Button[];
     attr: {};
 }
 
 export default class Profile extends Component<IProfile> {
     constructor(props: IProfile) {
-        super('main', props)
+        super('div', props)
     }
 
-    render(): void {
+    render() {
         return this.compile(tpl, this._props)
     }
 }

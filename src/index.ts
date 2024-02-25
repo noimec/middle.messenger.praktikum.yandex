@@ -1,28 +1,28 @@
-import Header from "./components/Header";
-import HeaderLink from "./components/ui/HeaderLink";
+import Nav from "./components/Nav";
+import NavLink from "./components/ui/NavLink";
 import ChatPage from "./pages/chat";
 
 const root = document.querySelector("#app");
 
-const header = new Header({
+const nav = new Nav({
   links: [
-    new HeaderLink({ page: '500', text: '500', attr: { class: 'nav__item' } }),
-    new HeaderLink({ page: '404', text: '404', attr: { class: 'nav__item' } }),
-    new HeaderLink({ page: 'chat', text: 'Чат', attr: { class: 'nav__item' } }),
-    new HeaderLink({ page: 'profile', text: 'Профиль', attr: { class: 'nav__item' } }),
-    new HeaderLink({ page: 'login', text: 'Вход', attr: { class: 'nav__item' } }),
-    new HeaderLink({ page: 'signin', text: 'Регистрация', attr: { class: 'nav__item' } }),
+    new NavLink({ page: '500', text: '500', attr: { class: 'nav__item' } }),
+    new NavLink({ page: '404', text: '404', attr: { class: 'nav__item' } }),
+    new NavLink({ page: 'chat', text: 'Чат', attr: { class: 'nav__item' } }),
+    new NavLink({ page: 'profile', text: 'Профиль', attr: { class: 'nav__item' } }),
+    new NavLink({ page: 'login', text: 'Вход', attr: { class: 'nav__item' } }),
+    new NavLink({ page: 'signin', text: 'Регистрация', attr: { class: 'nav__item' } }),
   ],
   attr: {
-    class: 'header flex'
+    class: 'nav flex'
   }
 });
 
 const chatPage = new ChatPage().getContent();
-const headerElement = header.getContent();
+const navElement = nav.getContent();
 
 document.addEventListener("DOMContentLoaded", () => {
-  root?.appendChild(headerElement);
+  root?.appendChild(navElement);
   root?.appendChild(chatPage);
 
   const links = document.querySelectorAll(".page-link");
@@ -47,7 +47,7 @@ const loadPage = async (pageName: string) => {
 
   if (root) {
     root.innerHTML = "";
-    root.appendChild(headerElement);
+    root.appendChild(navElement);
     root.appendChild(pageElement);
   }
 };
