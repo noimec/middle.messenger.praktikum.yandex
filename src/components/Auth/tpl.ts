@@ -1,5 +1,5 @@
 const tpl = `
-    <form action="#" class="form flex">
+    <form action="#" id="form" class="form flex">
 
         <h1 class="form__title">{{title}}</h1>
 

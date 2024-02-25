@@ -9,3 +9,16 @@
     flex-direction: column;
     margin-bottom: 40px;
   }
+
+.invalid {
+    color: $error-red;
+}
+
+.error__message{
+    position: absolute;
+    bottom: -14px;
+    left: 0;
+    font-size: 12px;
+    line-height: 12px;
+    color: $error-red;
+}
