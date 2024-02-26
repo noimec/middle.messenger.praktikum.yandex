@@ -1,23 +1,95 @@
 import Nav from './components/Nav/index.ts';
+import Link from './components/ui/Link/index.ts';
 import NavLink from './components/ui/NavLink/index.ts';
+import Page404 from './pages/404/index.ts';
+import Page500 from './pages/500/index.ts';
 import ChatPage from './pages/chat/index.ts';
+import LoginPage from './pages/login/index.ts';
+import ProfilePage from './pages/profile/index.ts';
+import SigninPage from './pages/signin/index.ts';
+import Component from './services/Component.ts';
+import renderDOM from './utils/renderDOM.ts';
 
 const root = document.querySelector('#app');
 
 const nav = new Nav({
-  links: [
-    new NavLink({ page: '500', text: '500', attr: { class: 'nav__item' } }),
-    new NavLink({ page: '404', text: '404', attr: { class: 'nav__item' } }),
-    new NavLink({ page: 'chat', text: 'Чат', attr: { class: 'nav__item' } }),
+  navLinks: [
     new NavLink({
-      page: 'profile',
-      text: 'Профиль',
+      links: [
+        new Link({
+          value: '500',
+          events: {
+            onLoad: () => {
+              renderDOM(new Page500() as unknown as Component<object>);
+            },
+          },
+          attr: { class: 'nav__item' },
+        })],
       attr: { class: 'nav__item' },
     }),
-    new NavLink({ page: 'login', text: 'Вход', attr: { class: 'nav__item' } }),
     new NavLink({
-      page: 'signin',
-      text: 'Регистрация',
+      links: [
+        new Link({
+          value: '404',
+          events: {
+            onLoad: () => {
+              renderDOM(new Page404() as unknown as Component<object>);
+            },
+          },
+          attr: { class: 'nav__item' },
+        })],
+      attr: { class: 'nav__item' },
+    }),
+    new NavLink({
+      links: [
+        new Link({
+          value: 'Чат',
+          events: {
+            onLoad: () => {
+              renderDOM(new ChatPage() as unknown as Component<object>);
+            },
+          },
+          attr: { class: 'nav__item' },
+        })],
+      attr: { class: 'nav__item' },
+    }),
+    new NavLink({
+      links: [
+        new Link({
+          value: 'Профиль',
+          events: {
+            onLoad: () => {
+              renderDOM(new ProfilePage() as unknown as Component<object>);
+            },
+          },
+          attr: { class: 'nav__item' },
+        })],
+      attr: { class: 'nav__item' },
+    }),
+    new NavLink({
+      links: [
+        new Link({
+          value: 'Вход',
+          events: {
+            onLoad: () => {
+              renderDOM(new LoginPage() as unknown as Component<object>);
+            },
+          },
+          attr: { class: 'nav__item' },
+        })],
+      attr: { class: 'nav__item' },
+    }),
+    new NavLink({
+      links: [
+        new Link({
+          value: 'Регистрация',
+          events: {
+            onLoad: () => {
+              renderDOM(new SigninPage() as unknown as Component<object>);
+            },
+          },
+          attr: { class: 'nav__item' },
+        })],
       attr: { class: 'nav__item' },
     }),
   ],
@@ -26,36 +98,6 @@ const nav = new Nav({
   },
 });
 
-const chatPage = new ChatPage().getContent();
-const navElement = nav.getContent();
+root?.append(nav.getContent());
 
-const loadPage = async (pageName: string) => {
-  const { default: Page } = await import(`./pages/${pageName}/index.ts`);
-  const page = new Page({});
-  const pageElement = page.getContent();
-
-  if (root) {
-    root.innerHTML = '';
-    root.appendChild(navElement);
-    root.appendChild(pageElement);
-  }
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  root?.appendChild(navElement);
-  root?.appendChild(chatPage);
-
-  const links = document.querySelectorAll('.page-link');
-
-  links.forEach((link) => {
-    link.addEventListener('click', async (event: Event) => {
-      event.preventDefault();
-
-      const pageName = (event.target as HTMLElement).getAttribute('data-page');
-
-      if (pageName) {
-        await loadPage(pageName);
-      }
-    });
-  });
-});
+export default nav;

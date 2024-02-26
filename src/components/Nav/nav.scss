@@ -2,12 +2,17 @@
     justify-content: center;
     position: absolute;
     z-index: 10;
+    top: 0;
     right: 50%;
     transform: translateX(50%);
 }
 
-.nav__item:not(:last-child) {
-  margin-right: 20px;
+.nav__item {
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
 }
 
 .nav__list {

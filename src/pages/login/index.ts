@@ -2,21 +2,26 @@ import Auth from '../../components/Auth/index.ts';
 import AuthField from '../../components/AuthField/index.ts';
 import Button from '../../components/ui/Button/index.ts';
 import Input from '../../components/ui/Input/index.ts';
+import nav from '../../index.ts';
 import { validateForm, validateInput } from '../../utils/validate.ts';
 
 export default class LoginPage {
   private authInstance: Auth;
 
+  private navInstance: typeof nav;
+
   constructor() {
+    this.navInstance = nav;
     this.authInstance = new Auth({
+      nav: this.navInstance,
       title: 'Вход',
       actionBtn: [
         new Button({
           value: 'Войти',
           attr: { class: 'action-button reset-btn' },
           events: {
-            onClick: () => {
-              this.validateForm();
+            onValidate: () => {
+              validateForm();
             },
           },
         }),
@@ -42,7 +47,7 @@ export default class LoginPage {
               },
               events: {
                 onBlur: (element) => {
-                  this.validateInput(element);
+                  validateInput(element);
                 },
               },
             }),
@@ -63,7 +68,7 @@ export default class LoginPage {
               },
               events: {
                 onBlur: (element) => {
-                  this.validateInput(element);
+                  validateInput(element);
                 },
               },
             }),
@@ -76,10 +81,6 @@ export default class LoginPage {
       },
     });
   }
-
-  private validateInput = validateInput;
-
-  private validateForm = validateForm;
 
   getContent() {
     return this.authInstance.getContent();

@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import Component from '../../../services/Component.ts';
 import tpl from './tpl.ts';
 
@@ -11,19 +12,19 @@ interface IInput {
 export default class Input extends Component<object> {
   constructor(props: IInput) {
     super('input', props);
-    if (props.events?.onBlur) {
-      this.onBlur(props.events.onBlur);
-    }
+
+    this.addEvents();
   }
 
-  onBlur(handler?: (element: HTMLInputElement) => void) {
-    const element = this.element as HTMLInputElement;
+  addEvents() {
+    super.addEvents();
 
-    if (handler) {
-      this.element?.addEventListener('blur', () => {
-        handler(element);
-      });
-    }
+    this.element?.addEventListener(
+      'blur',
+      () => {
+        this.props.events?.onBlur?.(this.element);
+      },
+    );
   }
 
   render() {

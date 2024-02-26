@@ -1,4 +1,5 @@
 const tpl = `
+    {{{nav}}}
     <form action="#" class="form flex">
 
         <h1 class="form__title">{{title}}</h1>

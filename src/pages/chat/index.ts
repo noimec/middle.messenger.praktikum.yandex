@@ -5,6 +5,10 @@ import Sender from '../../components/Sender/index.ts';
 import Button from '../../components/ui/Button/index.ts';
 import Input from '../../components/ui/Input/index.ts';
 import Link from '../../components/ui/Link/index.ts';
+import nav from '../../index.ts';
+import Component from '../../services/Component.ts';
+import renderDOM from '../../utils/renderDOM.ts';
+import ProfilePage from '../profile/index.ts';
 
 export default class ChatPage {
   private chatInstance: Chat;
@@ -13,7 +17,10 @@ export default class ChatPage {
 
   private dialogData: Dialog[];
 
+  private navInstance: typeof nav;
+
   constructor() {
+    this.navInstance = nav;
     this.dialogData = [
       new Dialog({
         date: '19 июля',
@@ -106,11 +113,17 @@ export default class ChatPage {
     ];
 
     this.chatInstance = new Chat({
+      nav: this.navInstance,
       senders: this.senderArray,
       dialog: this.dialogData,
       profileLink: [
         new Link({
           value: 'Профиль',
+          events: {
+            onLoad: () => {
+              renderDOM(new ProfilePage() as unknown as Component<object>);
+            },
+          },
           attr: { class: 'sidebar__link reset-link', href: './profile' },
         }),
       ],
@@ -138,6 +151,7 @@ export default class ChatPage {
         new Button({
           value: '',
           src: '../static/icons/attach-icon.svg',
+          alt: 'Отправить',
           attr: { class: 'chat__attach-btn reset-btn' },
         }),
       ],
@@ -145,6 +159,7 @@ export default class ChatPage {
         new Button({
           value: '',
           src: '../static/icons/back-icon.svg',
+          alt: 'Назад',
           attr: { class: 'chat__send-btn reset-btn' },
         }),
       ],
@@ -152,6 +167,7 @@ export default class ChatPage {
         new Button({
           value: '',
           src: '../static/icons/menu-icon.svg',
+          alt: 'Меню',
           attr: { class: 'chat__menu reset-btn' },
         }),
       ],

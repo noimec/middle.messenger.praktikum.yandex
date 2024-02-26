@@ -1,3 +1,4 @@
+import nav from '../../index.ts';
 import Component from '../../services/Component.ts';
 import Dialog from '../Dialog/index.ts';
 import Sender from '../Sender/index.ts';
@@ -16,6 +17,7 @@ interface IChat {
   searchInput: Input[];
   messageInput: Input[];
   profileLink: Link[];
+  nav: typeof nav;
   attr: object;
 }
 

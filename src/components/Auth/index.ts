@@ -1,3 +1,4 @@
+import nav from '../../index.ts';
 import Component from '../../services/Component.ts';
 import AuthField from '../AuthField/index.ts';
 import Button from '../ui/Button/index.ts';
@@ -8,6 +9,7 @@ interface IAuth {
   fields: AuthField[];
   actionBtn: Button[];
   commonBtn: Button[];
+  nav: typeof nav;
   attr: object;
 }
 

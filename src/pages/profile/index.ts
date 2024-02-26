@@ -2,12 +2,17 @@ import Profile from '../../components/Profile/index.ts';
 import ProfileField from '../../components/ProfileField/index.ts';
 import Button from '../../components/ui/Button/index.ts';
 import Input from '../../components/ui/Input/index.ts';
+import nav from '../../index.ts';
 
 export default class ProfilePage {
   private profileInstance: Profile;
 
+  private navInstance: typeof nav;
+
   constructor() {
+    this.navInstance = nav;
     this.profileInstance = new Profile({
+      nav: this.navInstance,
       userName: 'Иван',
       avatarBtn: [
         new Button({
@@ -43,6 +48,7 @@ export default class ProfilePage {
         new Button({
           value: '',
           src: '../static/icons/back-icon.svg',
+          alt: 'Назад',
           attr: { class: 'reset-btn' },
         }),
       ],

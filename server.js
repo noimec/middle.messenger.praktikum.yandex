@@ -10,4 +10,6 @@ app.get('/', (_req, res) => {
   res.sendFile(resolve(__dirname, 'dist/index.html'));
 });
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`page strted on ${PORT} http://localhost:3000/`);
+});
