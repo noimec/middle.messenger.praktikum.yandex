@@ -1,3 +1,4 @@
+import nav from '../../index.ts';
 import Component from '../../services/Component.ts';
 import Link from '../ui/Link/index.ts';
 import tpl from './tpl.ts';
@@ -7,6 +8,7 @@ interface Err {
   mainTitle: string;
   backLink: Link[];
   attr: object;
+  nav: typeof nav;
 }
 
 export default class Error extends Component<object> {

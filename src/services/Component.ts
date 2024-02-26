@@ -2,9 +2,11 @@ import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus.ts';
 
+type Nullable<T> = T | null;
+
 interface IProps {
   settings?: { withInternalID: string };
-  events?: { [eventName: string]: (event: Event) => void };
+  events?: { [eventName: string]: (event: Event | Nullable<HTMLElement>) => void };
   attr?: Record<string, string>;
   props?: Record<string, string>;
 }
@@ -12,8 +14,6 @@ interface IProps {
 interface IPropsAndStubs extends IProps {
   [key: string]: unknown;
 }
-
-type Nullable<T> = T | null;
 
 export default class Component<P extends object> {
   static EVENTS = {
@@ -89,7 +89,11 @@ export default class Component<P extends object> {
   render() {}
 
   addEvents() {
-    const { events = {} } = this.props;
+    const { events } = this.props;
+
+    if (!events) {
+      return;
+    }
 
     Object.keys(events).forEach((eventName) => {
       if (this.element) {
@@ -99,7 +103,11 @@ export default class Component<P extends object> {
   }
 
   removeEvents() {
-    const { events = {} } = this.props;
+    const { events } = this.props;
+
+    if (!events) {
+      return;
+    }
 
     Object.keys(events).forEach((eventName) => {
       if (this.element) {
@@ -109,7 +117,11 @@ export default class Component<P extends object> {
   }
 
   addAttribute() {
-    const { attr = {} } = this.props;
+    const { attr } = this.props;
+
+    if (!attr) {
+      return;
+    }
 
     Object.entries(attr).forEach(([key, value]) => {
       if (this.element) {

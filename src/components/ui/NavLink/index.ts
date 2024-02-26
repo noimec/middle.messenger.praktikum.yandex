@@ -1,10 +1,10 @@
 import Component from '../../../services/Component.ts';
+import Link from '../Link/index.ts';
 import tpl from './tpl.ts';
 
 interface INavLink {
-  page: string;
-  text: string;
   attr: object;
+  links: Link[];
 }
 
 export default class NavLink extends Component<object> {

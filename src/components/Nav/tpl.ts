@@ -1,6 +1,6 @@
 const tpl = `
     <ul class="flex nav__list reset-list">
-        {{{links}}}
+        {{{navLinks}}}
     </ul>
 `;
 

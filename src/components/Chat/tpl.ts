@@ -1,4 +1,5 @@
 const tpl = `
+{{{nav}}}
 <section class="sidebar flex">
         {{{profileLink}}}
         {{{searchInput}}}

@@ -4,7 +4,7 @@ import tpl from './tpl.ts';
 
 interface NavProps {
   className?: string;
-  links: HeaderLink[];
+  navLinks: HeaderLink[];
   attr: object;
 }
 
