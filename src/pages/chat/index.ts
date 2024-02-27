@@ -8,6 +8,7 @@ import Link from '../../components/ui/Link/index.ts';
 import nav from '../../index.ts';
 import Component from '../../services/Component.ts';
 import renderDOM from '../../utils/renderDOM.ts';
+import { validateInput } from '../../utils/validate.ts';
 import ProfilePage from '../profile/index.ts';
 
 export default class ChatPage {
@@ -134,6 +135,11 @@ export default class ChatPage {
             type: 'text',
             placeholder: 'Сообщение',
             name: 'message',
+          },
+          events: {
+            onBlur: (element) => {
+              validateInput(element);
+            },
           },
         }),
       ],
