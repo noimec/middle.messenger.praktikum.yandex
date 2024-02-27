@@ -3,6 +3,7 @@ import ProfileField from '../../components/ProfileField/index.ts';
 import Button from '../../components/ui/Button/index.ts';
 import Input from '../../components/ui/Input/index.ts';
 import nav from '../../index.ts';
+import { validateInput } from '../../utils/validate.ts';
 
 export default class ProfilePage {
   private profileInstance: Profile;
@@ -59,11 +60,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: 'pochta@yandex.ru',
+                placeholder: 'pochta@yandex.ru',
                 name: 'email',
                 id: 'email',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],
@@ -75,11 +82,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: 'ivanivanov',
+                placeholder: 'ivanivanov',
                 name: 'login',
                 id: 'login',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],
@@ -91,11 +104,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: 'Иван',
+                placeholder: 'Иван',
                 name: 'first_name',
                 id: 'first_name',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],
@@ -107,11 +126,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: 'Иванов',
+                placeholder: 'Иванов',
                 name: 'second_name',
                 id: 'second_name',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],
@@ -123,11 +148,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: 'Иван',
+                placeholder: 'Иван',
                 name: 'display_name',
                 id: 'display_name',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],
@@ -139,11 +170,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: '+79999999999',
+                placeholder: '+79999999999',
                 name: 'phone',
                 id: 'phone',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],
@@ -157,11 +194,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: '******',
+                placeholder: '******',
                 name: 'oldPassword',
                 id: 'oldPassword',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],
@@ -173,11 +216,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: '******',
+                placeholder: '******',
                 name: 'newPassword',
                 id: 'newPassword',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],
@@ -189,11 +238,17 @@ export default class ProfilePage {
           profileInput: [
             new Input({
               attr: {
-                class: 'profile__input reset-input',
+                class: 'profile__input reset-input validate-input',
                 type: 'text',
-                value: '******',
+                placeholder: '******',
                 name: 'newPassword',
                 id: 'newPassword',
+                dataValid: false,
+              },
+              events: {
+                onBlur: (element) => {
+                  validateInput(element);
+                },
               },
             }),
           ],

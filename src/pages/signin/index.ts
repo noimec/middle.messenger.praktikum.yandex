@@ -39,7 +39,7 @@ export default class SigninPage {
           authInput: [
             new Input({
               attr: {
-                class: 'form__input reset-input',
+                class: 'form__input reset-input validate-input',
                 type: 'text',
                 name: 'email',
                 id: 'email',
@@ -60,7 +60,7 @@ export default class SigninPage {
           authInput: [
             new Input({
               attr: {
-                class: 'form__input reset-input',
+                class: 'form__input reset-input validate-input',
                 type: 'text',
                 name: 'login',
                 id: 'login',
@@ -81,7 +81,7 @@ export default class SigninPage {
           authInput: [
             new Input({
               attr: {
-                class: 'form__input reset-input',
+                class: 'form__input reset-input validate-input',
                 type: 'text',
                 name: 'first_name',
                 id: 'first_name',
@@ -102,7 +102,7 @@ export default class SigninPage {
           authInput: [
             new Input({
               attr: {
-                class: 'form__input reset-input',
+                class: 'form__input reset-input validate-input',
                 type: 'text',
                 name: 'second_name',
                 id: 'second_name',
@@ -123,7 +123,7 @@ export default class SigninPage {
           authInput: [
             new Input({
               attr: {
-                class: 'form__input reset-input',
+                class: 'form__input reset-input validate-input',
                 type: 'text',
                 name: 'phone',
                 id: 'phone',
@@ -144,7 +144,7 @@ export default class SigninPage {
           authInput: [
             new Input({
               attr: {
-                class: 'form__input reset-input',
+                class: 'form__input reset-input validate-input',
                 type: 'text',
                 name: 'password',
                 id: 'password',

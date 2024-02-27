@@ -39,7 +39,7 @@ export default class LoginPage {
           authInput: [
             new Input({
               attr: {
-                class: 'form__input reset-input',
+                class: 'form__input reset-input validate-input',
                 type: 'text',
                 name: 'login',
                 id: 'login',
@@ -60,7 +60,7 @@ export default class LoginPage {
           authInput: [
             new Input({
               attr: {
-                class: 'form__input reset-input',
+                class: 'form__input reset-input validate-input',
                 type: 'text',
                 name: 'password',
                 id: 'password',
